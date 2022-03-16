@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Card } from "../../components/Card";
 import { Footer } from "../../components/Footer/Footer";
 import "./Home.css";
@@ -8,7 +9,7 @@ const Home = () => {
         <main>
             <section className="banner-image-container">
             <img src="https://silkshopyy.netlify.app/images/redmi-9a.jpg" className="banner-image" />
-            <button className="btn btn-image btn-primary"><a href="/Product-Listing/product.html" className="active-link">Shop Now</a></button>
+            <button className="btn btn-image btn-primary"><Link to="/productListing" className="active-link">Shop Now</Link></button>
             </section>
 
             
@@ -34,28 +35,28 @@ const Home = () => {
                 <figure className="img-box">
                 <img src="https://github.com/Jay-Gadhiya/silkshopy/blob/dev/images/back-smartp-img.jpeg?raw=true" className="back-imgs" />
                 </figure>
-                <figcaption className="text-overlay flex-center"><a href="/Product-Listing/product.html">Smartphones</a></figcaption>
+                <figcaption className="text-overlay flex-center"><Link to="/productListing">Smartphones</Link></figcaption>
             </article>
 
             <article className="feature-cat-container">
                 <figure className="img-box">
                 <img src="https://github.com/Jay-Gadhiya/silkshopy/blob/dev/images/back-lap-img.jpeg?raw=true" className="back-imgs" />
                 </figure>
-                <figcaption className="text-overlay flex-center"><a href="/Product-Listing/product.html">Laptops</a></figcaption>
+                <figcaption className="text-overlay flex-center"><Link to="/productListing">Laptops</Link></figcaption>
             </article>
 
             <article className="feature-cat-container">
                 <figure className="img-box">
                 <img src="https://github.com/Jay-Gadhiya/silkshopy/blob/dev/images/back-hp-img.jpeg?raw=true" className="back-imgs" />
                 </figure>
-                <figcaption className="text-overlay flex-center"><a href="/Product-Listing/product.html">Headphones</a></figcaption>
+                <figcaption className="text-overlay flex-center"><Link to="/productListing">Headphones</Link></figcaption>
             </article>
 
             <article className="feature-cat-container">
                 <figure className="img-box">
                 <img src="https://github.com/Jay-Gadhiya/silkshopy/blob/dev/images/back-game-img.jpeg?raw=true" className="back-imgs" />
                 </figure>
-                <figcaption className="text-overlay flex-center"><a href="/Product-Listing/product.html">Gaming</a></figcaption>
+                <figcaption className="text-overlay flex-center"><Link to="/productListing">Gaming</Link></figcaption>
             </article>
             </section>
 
