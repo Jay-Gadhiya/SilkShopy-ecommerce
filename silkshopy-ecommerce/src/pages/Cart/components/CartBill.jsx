@@ -1,35 +1,35 @@
 
 const CartBill = () => {
     return (
-        <section class="order-card-price flex">
-                <h3 class="order-heading">Price Details</h3>
+        <section className="order-card-price flex">
+                <h3 className="order-heading">Price Details</h3>
 
-                <span class="separator"></span>
+                <span className="separator"></span>
 
-                <div class="order-details flex">
-                    <span class="charge-type-name">Price (1 item)</span>
-                    <span class="charge-amount">Rs. <span class="rs">4999</span></span>
+                <div className="order-details flex">
+                    <span className="charge-type-name">Price (1 item)</span>
+                    <span className="charge-amount">Rs. <span className="rs">4999</span></span>
                 </div>
 
-                <div class="order-details flex mr-top">
-                    <span class="charge-type-name">Discount</span>
-                    <span class="charge-amount">-Rs. <span class="rs">1999</span></span>
+                <div className="order-details flex mr-top">
+                    <span className="charge-type-name">Discount</span>
+                    <span className="charge-amount">-Rs. <span className="rs">1999</span></span>
                 </div>
 
-                <div class="order-details flex mr-top">
-                    <span class="charge-type-name">Delivery Charges</span>
-                    <span class="charge-amount">Rs. <span class="rs">499</span></span>
+                <div className="order-details flex mr-top">
+                    <span className="charge-type-name">Delivery Charges</span>
+                    <span className="charge-amount">Rs. <span className="rs">499</span></span>
                 </div>
 
-                <span class="separator"></span>
+                <span className="separator"></span>
 
-                <div class="order-details flex">
-                    <h3 class="order-heading">Total Price</h3>
-                    <h3 class="total-amount">Rs. 3999</h3>
+                <div className="order-details flex">
+                    <h3 className="order-heading">Total Price</h3>
+                    <h3 className="total-amount">Rs. 3999</h3>
                 </div>
 
 
-                <button class="btn-card btn-primary-card">
+                <button className="btn-card btn-primary-card">
                     Place order
                 </button>
 

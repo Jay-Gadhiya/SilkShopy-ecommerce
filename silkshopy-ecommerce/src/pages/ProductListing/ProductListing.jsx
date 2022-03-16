@@ -4,14 +4,14 @@ import "./ProductListing.css";
 
 const ProductListing = () => {
     return (
-        <div class="page-container">
+        <div className="page-container">
             
             <Filters />
 
-            <main class="product-listing-container">
-                <h2 class="product-main-heading margin-bottom">Products</h2>
+            <main className="product-listing-container">
+                <h2 className="product-main-heading margin-bottom">Products</h2>
 
-                <div class="product-cards">
+                <div className="product-cards">
                     <Card />
                     <Card />
                     <Card />

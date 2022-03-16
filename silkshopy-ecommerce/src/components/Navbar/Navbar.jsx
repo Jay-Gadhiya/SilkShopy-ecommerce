@@ -2,31 +2,31 @@ import "./Navbar.css";
 
 const Navbar = () => {
     return (
-        <header class="header-shopy shadow-box">
-            <nav class="nav-shopy flex-center">
-                <section class="brand-name"><a href="/index.html"><img class="silk-img" src="https://silkshopyy.netlify.app/images/silkshopy-name.jpeg" alt="silk-img"/></a>
+        <header className="header-shopy shadow-box">
+            <nav className="nav-shopy flex-center">
+                <section className="brand-name"><a href="/index.html"><img className="silk-img" src="https://silkshopyy.netlify.app/images/silkshopy-name.jpeg" alt="silk-img"/></a>
                 </section>
     
-                <div class="nav-items flex-center">
-                    <section class="nav-input-box flex-center">
-                    <button class="btn-input-box">
-                        <i class="fas fa-search"></i>
+                <div className="nav-items flex-center">
+                    <section className="nav-input-box flex-center">
+                    <button className="btn-input-box">
+                        <i className="fas fa-search"></i>
                     </button>
-                    <input class="input-shopy" type="text" placeholder="search" />
+                    <input className="input-shopy" type="text" placeholder="search" />
                     </section>
-                    <section class="nav-icons flex-center">
-                    <button class="btn btn-login btn-primary"><a class="active-link" href="/auth/login.html">Login</a></button>
+                    <section className="nav-icons flex-center">
+                    <button className="btn btn-login btn-primary"><a className="active-link" href="/auth/login.html">Login</a></button>
         
-                    <div class="nav-icons-item flex-center">
-                        <span class="icon-shopy"><a href="/wishlist-page/wishlist.html"><i class="fas fa-heart"></i></a></span>
-                        <span class="below-text">Wishlist</span>
+                    <div className="nav-icons-item flex-center">
+                        <span className="icon-shopy"><a href="/wishlist-page/wishlist.html"><i className="fas fa-heart"></i></a></span>
+                        <span className="below-text">Wishlist</span>
                     </div>
         
-                    <div class="nav-icons-item flex-center">
-                        <span class="icon-shopy">
-                        <a href="/cart/cart.html"><i class="fas fa-shopping-cart"></i></a>
+                    <div className="nav-icons-item flex-center">
+                        <span className="icon-shopy">
+                        <a href="/cart/cart.html"><i className="fas fa-shopping-cart"></i></a>
                         </span>
-                        <span class="below-text">Cart</span>
+                        <span className="below-text">Cart</span>
                     </div>
                     </section>
                 </div>

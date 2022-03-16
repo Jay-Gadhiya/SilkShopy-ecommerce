@@ -5,9 +5,9 @@ import { CartProduct } from "./components/CartProduct"
 const Cart = () => {
     return (
         <>
-            <h2 class="my-cart-heading">My Cart</h2>
+            <h2 className="my-cart-heading">My Cart</h2>
 
-            <main class="purchase-area flex">
+            <main className="purchase-area flex">
                 <div className="column-cards">
                     <CartProduct />
                     <CartProduct />

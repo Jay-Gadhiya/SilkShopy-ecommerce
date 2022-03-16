@@ -10,31 +10,31 @@ const Signup = () => {
             <div className="input-container auth-name-input-cont flex margin-bottom width-100">
 
                 <div className="auth-name-box flex auth-name-input">
-                    <label for="email" className="auth-label">First Name</label>
+                    <label htmlFor="email" className="auth-label">First Name</label>
                     <input className="auth-input" type="email" placeholder="Type first name" />
                 </div>
 
                 <div className="auth-name-box auth-name-input flex">
-                    <label for="email" className="auth-label">Last Name</label>
+                    <label htmlFor="email" className="auth-label">Last Name</label>
                     <input className="auth-input last-name" type="email" placeholder="Type last name" />
                 </div>
                 
             </div>
     
             <div className="input-container flex margin-bottom width-100">
-                <label for="email" className="auth-label">Email address</label>
+                <label htmlFor="email" className="auth-label">Email address</label>
                 <input className="auth-input" type="email" placeholder="Type email" />
             </div>
     
             <div className="input-container flex margin-bottom width-100">
-            <label for="password" className="auth-label">Password</label>
+            <label htmlFor="password" className="auth-label">Password</label>
             <input className="auth-input" type="password" placeholder="Type password" />
             </div>
     
             <div className="condition-box flex width-100 margin-bottom">
                 <div className="remember-me-box">
                     <input type="checkbox" name="remember me" id="remember-me" />
-                    <label for="remember me">I accept all Tearms and Conditions</label>
+                    <label htmlFor="remember me">I accept all Tearms and Conditions</label>
                 </div>
 
             </div>
