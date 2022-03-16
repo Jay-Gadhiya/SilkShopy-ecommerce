@@ -1,0 +1,20 @@
+body {
+    background-color: #fff6f6;
+}
+
+.my-cart-heading {
+    margin-top: 6rem;
+    text-align: center;
+}
+
+.products-in-wishlist {
+    margin-top: 2rem;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width : 950px) {
+    .card-wrapper {
+        margin-bottom: 1rem;
+    }
+}
