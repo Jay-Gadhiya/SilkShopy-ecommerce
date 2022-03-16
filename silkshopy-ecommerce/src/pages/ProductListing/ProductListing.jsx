@@ -1,9 +1,11 @@
 import {Card} from "../../components/Card";
+import { Footer } from "../../components/Footer/Footer";
 import { Filters } from "./components/Filter";
 import "./ProductListing.css";
 
 const ProductListing = () => {
     return (
+        <>
         <div className="page-container">
             
             <Filters />
@@ -23,6 +25,8 @@ const ProductListing = () => {
                 </div>
             </main>
         </div>
+        <Footer />
+        </>
     )
 }
 

@@ -1,3 +1,4 @@
+import { Footer } from "../../components/Footer/Footer";
 import "./Cart.css";
 import { CartBill } from "./components/CartBill"
 import { CartProduct } from "./components/CartProduct"
@@ -15,6 +16,7 @@ const Cart = () => {
                 
                 <CartBill />
             </main>
+            <Footer />
         </>
 
     )

@@ -1,8 +1,10 @@
 import { Card } from "../../components/Card";
+import { Footer } from "../../components/Footer/Footer";
 import "./Home.css";
 
 const Home = () => {
     return (
+        <>
         <main>
             <section className="banner-image-container">
             <img src="https://silkshopyy.netlify.app/images/redmi-9a.jpg" className="banner-image" />
@@ -70,6 +72,8 @@ const Home = () => {
                 <Card />
             </div>
         </main>
+        <Footer />
+        </>
     )
 }
 
