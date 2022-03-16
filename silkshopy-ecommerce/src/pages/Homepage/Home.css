@@ -37,6 +37,10 @@ body {
   width: 100%;
 }
 
+.banner-image-container .btn-image {
+  width: auto;
+}
+
 .btn-image {
   position: absolute;
   bottom: 5%;

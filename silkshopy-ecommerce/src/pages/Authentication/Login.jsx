@@ -1,4 +1,6 @@
 import "./Authentication.css";
+import { Link } from "react-router-dom";
+
 
 const Login = () => {
     return (
@@ -33,7 +35,7 @@ const Login = () => {
             </div>
     
             <div className="auth-btn width-100">
-                <button className="btn btn-secondary-link"><a href="/auth/signup.html">Create New Account</a></button>.
+                <button className="btn btn-secondary-link"><Link to="/signup">Create New Account</Link></button>.
             </div>
         </section>
     )
