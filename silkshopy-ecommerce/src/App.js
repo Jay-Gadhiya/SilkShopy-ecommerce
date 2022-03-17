@@ -10,7 +10,6 @@ import { Wishlist } from "../src/pages/Wishlist/Wishlist";
 import { Login } from "../src/pages/Authentication/Login";
 import { Signup } from "../src/pages/Authentication/Signup";
 
-
 function App() {
   return (
     <>
