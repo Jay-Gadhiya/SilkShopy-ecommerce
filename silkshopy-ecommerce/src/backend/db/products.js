@@ -1,4 +1,5 @@
 import { v4 as uuid } from "uuid";
+import {asusFlip, dellInspiron, lenovoIdeapad, realmeBookSlim, googlePixel, pocoC31, realmeNarzo, realmeSe, hpGaming, acerNitro, redmi10t, asusRog, boatRock, miBass, noise, sony} from "../../assets/export";
 
 /**
  * Product Database can be added here.
@@ -8,19 +9,20 @@ import { v4 as uuid } from "uuid";
 export const products = [
   {
     _id: uuid(),
-    title: "Realme Book (Slim)",
-    description : "8 GB/256 GB SSD",
+    title: "Realme Book",
+    description : "8 GB/256 GB. SSD",
     author: "realme",
     price: "39940",
     cutPrice : "54999",
     discount : "27%",
     categoryName: "laptop",
     rating : "4.4",
-    img : ""
+    img : realmeBookSlim,
+    badge : false 
   },
   {
     _id: uuid(),
-    title: "ASUS VivoBook Flip 14",
+    title: "ASUS VivoBook Flip",
     description : "8 GB/512 GB SSD",
     author: "asus",
     price: "69940",
@@ -28,7 +30,47 @@ export const products = [
     discount : "18%",
     categoryName: "laptop",
     rating : "4.2",
-    img : ""
+    img : asusFlip,
+    badge : false
+  },
+  {
+    _id: uuid(),
+    title: "HP Pavilion",
+    description : "16 GB/512 GB SSD",
+    author: "hp",
+    price: "92140",
+    cutPrice : "113019",
+    discount : "18%",
+    categoryName: "gaming",
+    rating : "4.5",
+    img : hpGaming,
+    badge : true
+  },
+   {
+    _id: uuid(),
+    title: "DELL Inspiron9",
+    description : "8 GB/256 GB SSD",
+    author: "dell",
+    price: "41840",
+    cutPrice : "56590",
+    discount : "27%",
+    categoryName: "laptop",
+    rating : "4.4",
+    img : dellInspiron,
+    badge : false
+  },
+  {
+    _id: uuid(),
+    title: "acer Nitro 5 Ryzen",
+    description : "8 GB/1 TB HDD",
+    author: "acer",
+    price: "59940",
+    cutPrice : "99999",
+    discount : "40%",
+    categoryName: "gaming",
+    rating : "4.5",
+    img : acerNitro,
+    badge : false
   },
   {
     _id: uuid(),
@@ -40,44 +82,10 @@ export const products = [
     discount : "33%",
     categoryName: "laptop",
     rating : "4.3",
-    img : ""
+    img : lenovoIdeapad,
+    badge : false
   },
-  {
-    _id: uuid(),
-    title: "DELL Inspiron Core i3",
-    description : "8 GB/256 GB SSD",
-    author: "dell",
-    price: "41840",
-    cutPrice : "56590",
-    discount : "27%",
-    categoryName: "laptop",
-    rating : "4.4",
-    img : ""
-  },
-  {
-    _id: uuid(),
-    title: "acer Nitro 5 Ryzen 5",
-    description : "8 GB/1 TB HDD",
-    author: "acer",
-    price: "59940",
-    cutPrice : "99999",
-    discount : "40%",
-    categoryName: "gaming",
-    rating : "4.5",
-    img : ""
-  },
-  {
-    _id: uuid(),
-    title: "HP Pavilion Gaming",
-    description : "16 GB/512 GB SSD",
-    author: "hp",
-    price: "92140",
-    cutPrice : "113019",
-    discount : "18%",
-    categoryName: "gaming",
-    rating : "4.5",
-    img : ""
-  },
+  
   {
     _id: uuid(),
     title: "POCO C31",
@@ -88,7 +96,8 @@ export const products = [
     discount : "25%",
     categoryName: "phone",
     rating : "4.4",
-    img : ""
+    img : pocoC31,
+    badge : false
   },
   {
     _id: uuid(),
@@ -100,7 +109,8 @@ export const products = [
     discount : "13%",
     categoryName: "phone",
     rating : "4.5",
-    img : ""
+    img : googlePixel,
+    badge : false
   },
   {
     _id: uuid(),
@@ -112,7 +122,8 @@ export const products = [
     discount : "20%",
     categoryName: "phone",
     rating : "4.7",
-    img : ""
+    img : realmeSe,
+    badge : false
   },
   {
     _id: uuid(),
@@ -124,7 +135,8 @@ export const products = [
     discount : "9%",
     categoryName: "phone",
     rating : "4.3",
-    img : ""
+    img : realmeNarzo,
+    badge : false
   },
   {
     _id: uuid(),
@@ -136,7 +148,8 @@ export const products = [
     discount : "18%",
     categoryName: "gaming",
     rating : "4.2",
-    img : ""
+    img : redmi10t,
+    badge : false
   },
   {
     _id: uuid(),
@@ -148,7 +161,8 @@ export const products = [
     discount : "14%",
     categoryName: "gaming",
     rating : "4.4",
-    img : ""
+    img : asusRog,
+    badge : false
   },
   {
     _id: uuid(),
@@ -160,11 +174,12 @@ export const products = [
     discount : "69%",
     categoryName: "headphone",
     rating : "4.3",
-    img : ""
+    img : boatRock,
+    badge : true
   },
   {
     _id: uuid(),
-    title: "Noise One Wireless",
+    title: "Noise One",
     description : "Soft Black",
     author: "noise",
     price: "1049",
@@ -172,7 +187,8 @@ export const products = [
     discount : "74%",
     categoryName: "headphone",
     rating : "3.9",
-    img : ""
+    img : noise,
+    badge : false
   },
   {
     _id: uuid(),
@@ -184,7 +200,8 @@ export const products = [
     discount : "30%",
     categoryName: "headphone",
     rating : "4.2",
-    img : ""
+    img : miBass,
+    badge : false
   },
   {
     _id: uuid(),
@@ -196,6 +213,7 @@ export const products = [
     discount : "33%",
     categoryName: "headphone",
     rating : "4.1",
-    img : ""
+    img : sony,
+    badge : false
   },
 ];
