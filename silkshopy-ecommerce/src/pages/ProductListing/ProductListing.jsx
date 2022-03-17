@@ -9,7 +9,8 @@ const ProductListing = () => {
 
     const [product, setProduct] = useState();
 
-    const getProductsData = async() => {
+
+    useEffect(() => (async() => {
         try {
             const res = await axios.get("/api/products");
             setProduct(() => res.data.products);
@@ -17,9 +18,7 @@ const ProductListing = () => {
         catch(error) {
             console.log(error);
         }
-    }
-
-    useEffect(() => getProductsData(),[]);
+    })(),[]);
 
     return (
         <>
