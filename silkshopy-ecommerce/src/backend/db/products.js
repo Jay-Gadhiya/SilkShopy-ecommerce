@@ -1,5 +1,5 @@
 import { v4 as uuid } from "uuid";
-import {asusFlip, dellInspiron, lenovoIdeapad, realmeBookSlim, googlePixel, pocoC31, realmeNarzo, realmeSe, hpGaming, acerNitro, redmi10t, asusRog, boatRock, miBass, noise, sony} from "../../assets/export";
+import {asusFlip, dellInspiron, lenovoIdeapad, realmeBookSlim, googlePixel, pocoC31, realmeNarzo, realmeSe, hpGaming, acerNitro, redmi10t, asusRog, boatRock, miBass, noise, sony, asusTuff, msi, samsungF22, samsungFe} from "../../assets/export";
 
 /**
  * Product Database can be added here.
@@ -85,7 +85,32 @@ export const products = [
     img : lenovoIdeapad,
     badge : false
   },
-  
+  {
+    _id: uuid(),
+    title: "MSI GF63",
+    description : "8 GB/1 TB HDD",
+    author: "msi",
+    price: "65290",
+    cutPrice : "83990",
+    discount : "22%",
+    categoryName: "laptop",
+    rating : "4.4",
+    img : msi,
+    badge : false
+  },
+  {
+    _id: uuid(),
+    title: "ASUS TUF",
+    description : "16 GB/512 GB SSD",
+    author: "asus",
+    price: "89990",
+    cutPrice : "129990",
+    discount : "31%",
+    categoryName: "laptop",
+    rating : "4.6",
+    img : asusTuff,
+    badge : false
+  },
   {
     _id: uuid(),
     title: "POCO C31",
@@ -162,6 +187,32 @@ export const products = [
     categoryName: "gaming",
     rating : "4.4",
     img : asusRog,
+    badge : false
+  },
+  {
+    _id: uuid(),
+    title: "SAMSUNG S20",
+    description : "Cloud Navy 128 GB",
+    author: "samsung",
+    price: "37764",
+    cutPrice :"38429",
+    discount : "50%",
+    categoryName: "phone",
+    rating : "4.0",
+    img : samsungFe,
+    badge : false
+  },
+  {
+    _id: uuid(),
+    title: "SAMSUNG F22",
+    description : "Denim Blue, 128 GB",
+    author: "samsung",
+    price: "14999",
+    cutPrice :"16999",
+    discount : "12%",
+    categoryName: "phone",
+    rating : "4.3",
+    img : samsungF22,
     badge : false
   },
   {
