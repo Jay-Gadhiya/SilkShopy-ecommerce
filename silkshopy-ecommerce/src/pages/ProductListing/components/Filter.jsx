@@ -1,5 +1,9 @@
+import { useFilter } from "../../../contexts/context/filter-context";
 
 const Filters = () => {
+
+    const { dispatch } = useFilter();
+    
     return (
         <aside className="aside-sec">
             <div className="filter-clear-sec flex-center margin-bottom">
@@ -26,12 +30,22 @@ const Filters = () => {
             <label htmlFor="Sort by" className="font-style sort-by-label">Sort by</label>
 
             <div className="sort-price flex">
-                <input type="radio" name="price" id="low-to-high" />
+                <input 
+                type="radio" 
+                name="price" 
+                id="low-to-high" 
+                onChange={() => dispatch({ type: "SORT", payload: "LOW_TO_HIGH" })}
+                />
                 <label htmlFor="low-to-high">Price : Low to High</label>
             </div>
 
             <div className="sort-price flex">
-                <input type="radio" name="price" id="low-to-high" />
+                <input 
+                type="radio" 
+                name="price" 
+                id="low-to-high" 
+                onChange={() => dispatch({ type: "SORT", payload: "HIGH_TO_LOW" })}
+                />
                 <label htmlFor="high-to-low">Price : High to Low</label>
             </div>
             </div>
