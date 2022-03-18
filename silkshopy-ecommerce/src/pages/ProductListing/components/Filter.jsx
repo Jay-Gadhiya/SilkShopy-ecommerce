@@ -13,11 +13,13 @@ const Filters = () => {
             <div className="price-container margin-bottom">
             <label for="price" className="price font-style">Price</label>
             <div className="price-devide flex-center">
-                <span className="amount">5000</span>
-                <span className="amount">10,000</span>
-                <span className="amount">50,000</span>
+                <span className="amount">10k</span>
+                <span className="amount">20k</span>
+                <span className="amount">30k</span>
+                <span className="amount">40k</span>
+                <span className="amount">50k</span>
             </div>
-            <input type="range" min="5000" max="80000" className="price-input" />
+            <input type="range" min="10000" max="50000" step="10000" className="price-input" />
             </div>
 
             <div className="sort-price-container flex margin-bottom">
