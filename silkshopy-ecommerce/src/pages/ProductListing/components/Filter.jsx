@@ -78,22 +78,42 @@ const Filters = () => {
             <label htmlFor="Sort by" className="font-style sort-by-label">Rating</label>
 
             <div className="sort-price flex">
-                <input type="radio" name="rating" id="low-to-high" />
+                <input 
+                type="radio" 
+                name="rating" 
+                id="low-to-high" 
+                onChange={() => dispatch({ type: "RATING", payload: "4_AND_ABOVE" })}
+                />
                 <label htmlFor="4 Star & above">4 Star & above</label>
             </div>
 
             <div className="sort-price flex">
-                <input type="radio" name="rating" id="low-to-high" />
+                <input 
+                type="radio" 
+                name="rating" 
+                id="low-to-high"
+                onChange={() => dispatch({ type: "RATING", payload: "3_AND_ABOVE" })}
+                 />
                 <label htmlFor="3 Star & above">3 Star & above</label>
             </div>
 
             <div className="sort-price flex">
-                <input type="radio" name="rating" id="low-to-high" />
+                <input 
+                type="radio" 
+                name="rating" 
+                id="low-to-high" 
+                onChange={() => dispatch({ type: "RATING", payload: "2_AND_ABOVE" })}
+                />
                 <label htmlFor="2 Star & above">2 Star & above</label>
             </div>
 
             <div className="sort-price flex">
-                <input type="radio" name="rating" id="low-to-high" />
+                <input 
+                type="radio" 
+                name="rating" 
+                id="low-to-high" 
+                onChange={() => dispatch({ type: "RATING", payload: "1_AND_ABOVE" })}
+                />
                 <label htmlFor="1 Star & above">1 Star & above</label>
             </div>
             </div>

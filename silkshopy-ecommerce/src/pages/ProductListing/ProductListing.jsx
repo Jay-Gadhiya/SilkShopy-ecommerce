@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useFilter } from "../../contexts/context/filter-context";
 import { sortByPrice } from "./functions/sort-price";
+import { sortByRating } from "./functions/sort-rating";
 
 const ProductListing = () => {
   const [product, setProduct] = useState();
@@ -15,6 +16,7 @@ const ProductListing = () => {
   const { sortBy, rating, showAllProducts, laptopOnly, phoneOnly, headPhoneOnly, gamingOnly, priceRange } = state;
 
   const sortedData = sortByPrice(sortBy, product);
+  const ratingData = sortByRating(sortedData, rating);
 
   useEffect(
     () =>
@@ -39,18 +41,8 @@ const ProductListing = () => {
 
           <div className="product-cards">
             {product &&
-              sortedData.map((item) => (
-                <Card
-                  key={item.id}
-                  image={item.img}
-                  title={item.title}
-                  description={item.description}
-                  price={item.price}
-                  cutPrice={item.cutPrice}
-                  discount={item.discount}
-                  rating={item.rating}
-                  badge={item.badge}
-                />
+              ratingData.map((item) => (
+                <Card key={item.id} productData = {item} />
               ))}
           </div>
         </main>

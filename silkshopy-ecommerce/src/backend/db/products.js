@@ -48,14 +48,14 @@ export const products = [
   },
    {
     _id: uuid(),
-    title: "DELL Inspiron9",
+    title: "DELL Inspiron",
     description : "8 GB/256 GB SSD",
     author: "dell",
     price: "39480",
     cutPrice : "56590",
     discount : "27%",
     categoryName: "laptop",
-    rating : "4.4",
+    rating : "3.4",
     img : dellInspiron,
     badge : false
   },
@@ -81,7 +81,7 @@ export const products = [
     cutPrice : "56590",
     discount : "33%",
     categoryName: "laptop",
-    rating : "4.3",
+    rating : "3.5",
     img : lenovoIdeapad,
     badge : false
   },
@@ -94,7 +94,7 @@ export const products = [
     cutPrice : "53990",
     discount : "22%",
     categoryName: "laptop",
-    rating : "4.4",
+    rating : "3.5",
     img : msi,
     badge : false
   },
@@ -146,7 +146,7 @@ export const products = [
     cutPrice : "24999",
     discount : "20%",
     categoryName: "phone",
-    rating : "4.7",
+    rating : "3.7",
     img : realmeSe,
     badge : false
   },
@@ -172,7 +172,7 @@ export const products = [
     cutPrice : "13999",
     discount : "18%",
     categoryName: "gaming",
-    rating : "4.2",
+    rating : "4.5",
     img : redmi10t,
     badge : false
   },
@@ -185,7 +185,7 @@ export const products = [
     cutPrice :"57999",
     discount : "14%",
     categoryName: "gaming",
-    rating : "4.4",
+    rating : "4.5",
     img : asusRog,
     badge : false
   },
@@ -198,7 +198,7 @@ export const products = [
     cutPrice :"38429",
     discount : "50%",
     categoryName: "phone",
-    rating : "4.0",
+    rating : "2.3",
     img : samsungFe,
     badge : false
   },
@@ -237,7 +237,7 @@ export const products = [
     cutPrice :"3999",
     discount : "74%",
     categoryName: "headphone",
-    rating : "3.9",
+    rating : "2.1",
     img : noise,
     badge : false
   },
@@ -250,7 +250,7 @@ export const products = [
     cutPrice :"2199",
     discount : "30%",
     categoryName: "headphone",
-    rating : "4.2",
+    rating : "2.1",
     img : miBass,
     badge : false
   },
