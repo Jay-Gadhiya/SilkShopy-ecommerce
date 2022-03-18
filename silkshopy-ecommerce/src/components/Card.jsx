@@ -1,3 +1,4 @@
+import "./card.css";
 
 const Card = ({image, title, description, price, cutPrice, discount, rating, badge}) => {
     return (

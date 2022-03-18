@@ -1,0 +1,22 @@
+@keyframes move {
+    from {
+      transform: translateX(0);
+      transform: skewX(-25deg);
+      opacity: 0.5;
+    }
+  
+    to {
+      transform: translateX(300%);
+      opacity: 0;
+    }
+  }
+
+.move {
+    animation-duration: 1.2s;
+    animation-name: move;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    height: 1rem;
+    width: 2rem;
+    background-color: white;
+}
