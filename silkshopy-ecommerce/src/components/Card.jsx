@@ -10,7 +10,8 @@ const Card = ({productData}) => {
             <div className="card">
             <div className="card-image">
                 <img className="img-cards" src={img} alt="img" />
-                <span className = {`badge-new ${!badge && "hide"}` } >New</span>
+                <span className = {`badge-new ${!badge && "hide"}` } >Best Value</span>
+                <span className="animate"></span>
             </div>
             <div className="card-details">
                 <div className="card-item">
