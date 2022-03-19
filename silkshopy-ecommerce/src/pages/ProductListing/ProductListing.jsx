@@ -8,17 +8,19 @@ import { useFilter } from "../../contexts/context/filter-context";
 import { sortByPrice } from "./functions/sort-price";
 import { sortByRating } from "./functions/sort-rating";
 import { priceRangeFilter } from "./functions/price-range";
+import { catagoryFilter } from "./functions/catagory-filter";
 
 const ProductListing = () => {
   const [product, setProduct] = useState([]);
 
   const { state } = useFilter();
-  console.log(state);
   const { sortBy, rating, showAllProducts, laptopOnly, phoneOnly, headPhoneOnly, gamingOnly, priceRange } = state;
 
-  const priceRangeData = priceRangeFilter(product, priceRange);
-  const sortedData = sortByPrice(sortBy, priceRangeData);
-  const ratingData = sortByRating(sortedData, rating);
+  const catagoryData = catagoryFilter(product, laptopOnly, phoneOnly, headPhoneOnly, gamingOnly);
+  const ratingData = sortByRating(catagoryData, rating);
+  const sortedData = sortByPrice(sortBy, ratingData);
+  const priceRangeData = priceRangeFilter(sortedData, priceRange);
+
 
   useEffect(
     () =>
@@ -43,7 +45,7 @@ const ProductListing = () => {
 
           <div className="product-cards">
             {product &&
-              ratingData.map((item) => (
+              priceRangeData.map((item) => (
                 <Card key={item.id} productData = {item} />
               ))}
           </div>

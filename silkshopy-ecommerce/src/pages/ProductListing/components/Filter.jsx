@@ -2,7 +2,8 @@ import { useFilter } from "../../../contexts/context/filter-context";
 
 const Filters = () => {
 
-    const { dispatch } = useFilter();
+    const { state, dispatch } = useFilter();
+    const {laptopOnly, phoneOnly, headPhoneOnly, gamingOnly} = state;
     
     return (
         <aside className="aside-sec">
@@ -61,22 +62,46 @@ const Filters = () => {
             <label htmlFor="Category" className="font-style sort-by-label">Category</label>
 
             <div className="sort-price flex">
-                <input type="checkbox" name="smartphones" id="smartphones" />
+                <input 
+                type="checkbox" 
+                name="smartphones" 
+                id="smartphones"
+                checked={phoneOnly}
+                onChange={() => dispatch({ type: "TOGGLE_SMARTPHONE" })}
+                />
                 <label htmlFor="smartphones">Smartphones</label>
             </div>
 
             <div className="sort-price flex">
-                <input type="checkbox" name="laptops" id="laptops" />
+                <input 
+                type="checkbox" 
+                name="laptops" 
+                id="laptops" 
+                checked={laptopOnly}
+                onChange={() => dispatch({ type: "TOGGLE_LAPTOP" })}
+                />
                 <label htmlFor="laptops">Laptops</label>
             </div>
 
             <div className="sort-price flex">
-                <input type="checkbox" name="Headphones" id="Headphones" />
+                <input 
+                type="checkbox" 
+                name="Headphones" 
+                id="Headphones" 
+                checked={headPhoneOnly}
+                onChange={() => dispatch({ type: "TOGGLE_HEADPHONE" })}
+                />
                 <label htmlFor="Headphones">Headphones</label>
             </div>
 
             <div className="sort-price flex">
-                <input type="checkbox" name="gaming" id="gaming" />
+                <input 
+                type="checkbox" 
+                name="gaming" 
+                id="gaming" 
+                checked={gamingOnly}
+                onChange={() => dispatch({ type: "TOGGLE_GAMING" })}
+                />
                 <label htmlFor="gaming">Gaming</label>
             </div>
             </div>
