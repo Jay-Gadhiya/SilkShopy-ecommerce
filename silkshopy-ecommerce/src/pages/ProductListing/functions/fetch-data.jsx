@@ -14,7 +14,7 @@ const useFetchData = () => {
           const res = await axios.get("/api/products");
           setProduct(() => res.data.products);
         } catch (error) {
-          console.log(error);
+           return error;
         }
       })(),
     []
