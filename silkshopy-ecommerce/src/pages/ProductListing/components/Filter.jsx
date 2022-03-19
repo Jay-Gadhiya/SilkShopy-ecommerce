@@ -23,7 +23,14 @@ const Filters = () => {
                 <span className="amount">40k</span>
                 <span className="amount">50k</span>
             </div>
-            <input type="range" min="10000" max="50000" step="10000" className="price-input" />
+            <input 
+                type="range" 
+                min="10000" 
+                max="50000" 
+                step="10000" 
+                className="price-input"
+                onChange={(e) => dispatch({ type: "RANGE", payload: e.target.value })}
+            />
             </div>
 
             <div className="sort-price-container flex margin-bottom">

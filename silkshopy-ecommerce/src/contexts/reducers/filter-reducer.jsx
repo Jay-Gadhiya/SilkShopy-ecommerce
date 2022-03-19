@@ -4,8 +4,11 @@ const filterReducer = (state, action) => {
             return {...state, sortBy : action.payload};
         
         case "RATING":
-        return {...state, rating : action.payload};
-    
+            return {...state, rating : action.payload};
+
+        case "RANGE":
+            return {...state, priceRange : action.payload};
+
         default:
             return state;
     }

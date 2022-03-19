@@ -7,15 +7,17 @@ import axios from "axios";
 import { useFilter } from "../../contexts/context/filter-context";
 import { sortByPrice } from "./functions/sort-price";
 import { sortByRating } from "./functions/sort-rating";
+import { priceRangeFilter } from "./functions/price-range";
 
 const ProductListing = () => {
-  const [product, setProduct] = useState();
+  const [product, setProduct] = useState([]);
 
   const { state } = useFilter();
   console.log(state);
   const { sortBy, rating, showAllProducts, laptopOnly, phoneOnly, headPhoneOnly, gamingOnly, priceRange } = state;
 
-  const sortedData = sortByPrice(sortBy, product);
+  const priceRangeData = priceRangeFilter(product, priceRange);
+  const sortedData = sortByPrice(sortBy, priceRangeData);
   const ratingData = sortByRating(sortedData, rating);
 
   useEffect(
