@@ -56,7 +56,7 @@ const Filters = () => {
                 <input 
                 type="radio" 
                 name="price" 
-                id="low-to-high" 
+                id="high-to-low" 
                 checked={ sortBy === "HIGH_TO_LOW" }
                 onChange={() => dispatch({ type: "SORT", payload: "HIGH_TO_LOW" })}
                 />
@@ -119,7 +119,7 @@ const Filters = () => {
                 <input 
                 type="radio" 
                 name="rating" 
-                id="low-to-high"
+                id="four-and-above"
                 checked ={rating === "4_AND_ABOVE"}
                 onChange={() => dispatch({ type: "RATING", payload: "4_AND_ABOVE" })}
                 />
@@ -130,7 +130,7 @@ const Filters = () => {
                 <input 
                 type="radio" 
                 name="rating" 
-                id="low-to-high"
+                id="three-and-above"
                 checked ={rating === "3_AND_ABOVE"}
                 onChange={() => dispatch({ type: "RATING", payload: "3_AND_ABOVE" })}
                  />
@@ -141,7 +141,7 @@ const Filters = () => {
                 <input 
                 type="radio" 
                 name="rating" 
-                id="low-to-high" 
+                id="two-and-above" 
                 checked ={rating === "2_AND_ABOVE"}
                 onChange={() => dispatch({ type: "RATING", payload: "2_AND_ABOVE" })}
                 />
@@ -152,7 +152,7 @@ const Filters = () => {
                 <input 
                 type="radio" 
                 name="rating" 
-                id="low-to-high"
+                id="one-and-above"
                 checked ={rating === "1_AND_ABOVE"} 
                 onChange={() => dispatch({ type: "RATING", payload: "1_AND_ABOVE" })}
                 />
