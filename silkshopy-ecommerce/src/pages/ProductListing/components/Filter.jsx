@@ -3,16 +3,19 @@ import { useFilter } from "../../../contexts/context/filter-context";
 const Filters = () => {
 
     const { state, dispatch } = useFilter();
-    const {laptopOnly, phoneOnly, headPhoneOnly, gamingOnly} = state;
+    const {priceRange, sortBy, rating, laptopOnly, phoneOnly, headPhoneOnly, gamingOnly} = state;
     
     return (
         <aside className="aside-sec">
             <div className="filter-clear-sec flex-center margin-bottom">
-            <span className="filter font-style">Filters</span>
-            <span className="clear">
-                <button className="btn btn-clear btn-secondary-link">
-                <a href="#">Clear</a>
-                </button></span>
+                <span className="filter font-style">
+                    Filters
+                </span>
+                <span className="clear">
+                    <button onClick={() => dispatch({ type: "CLEAR" })} className="btn btn-clear btn-secondary-link">
+                        <a href="#">Clear</a>
+                    </button>
+                </span>
             </div>
             
             <div className="price-container margin-bottom">
@@ -30,6 +33,7 @@ const Filters = () => {
                 max="50000" 
                 step="10000" 
                 className="price-input"
+                value={priceRange}
                 onChange={(e) => dispatch({ type: "RANGE", payload: e.target.value })}
             />
             </div>
@@ -41,7 +45,8 @@ const Filters = () => {
                 <input 
                 type="radio" 
                 name="price" 
-                id="low-to-high" 
+                id="low-to-high"
+                checked={ sortBy === "LOW_TO_HIGH" }
                 onChange={() => dispatch({ type: "SORT", payload: "LOW_TO_HIGH" })}
                 />
                 <label htmlFor="low-to-high">Price : Low to High</label>
@@ -52,6 +57,7 @@ const Filters = () => {
                 type="radio" 
                 name="price" 
                 id="low-to-high" 
+                checked={ sortBy === "HIGH_TO_LOW" }
                 onChange={() => dispatch({ type: "SORT", payload: "HIGH_TO_LOW" })}
                 />
                 <label htmlFor="high-to-low">Price : High to Low</label>
@@ -113,7 +119,8 @@ const Filters = () => {
                 <input 
                 type="radio" 
                 name="rating" 
-                id="low-to-high" 
+                id="low-to-high"
+                checked ={rating === "4_AND_ABOVE"}
                 onChange={() => dispatch({ type: "RATING", payload: "4_AND_ABOVE" })}
                 />
                 <label htmlFor="4 Star & above">4 Star & above</label>
@@ -124,6 +131,7 @@ const Filters = () => {
                 type="radio" 
                 name="rating" 
                 id="low-to-high"
+                checked ={rating === "3_AND_ABOVE"}
                 onChange={() => dispatch({ type: "RATING", payload: "3_AND_ABOVE" })}
                  />
                 <label htmlFor="3 Star & above">3 Star & above</label>
@@ -134,6 +142,7 @@ const Filters = () => {
                 type="radio" 
                 name="rating" 
                 id="low-to-high" 
+                checked ={rating === "2_AND_ABOVE"}
                 onChange={() => dispatch({ type: "RATING", payload: "2_AND_ABOVE" })}
                 />
                 <label htmlFor="2 Star & above">2 Star & above</label>
@@ -143,7 +152,8 @@ const Filters = () => {
                 <input 
                 type="radio" 
                 name="rating" 
-                id="low-to-high" 
+                id="low-to-high"
+                checked ={rating === "1_AND_ABOVE"} 
                 onChange={() => dispatch({ type: "RATING", payload: "1_AND_ABOVE" })}
                 />
                 <label htmlFor="1 Star & above">1 Star & above</label>

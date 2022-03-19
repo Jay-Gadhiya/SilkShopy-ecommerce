@@ -8,7 +8,6 @@ const Home = () => {
 
     const { product } = useFetchData();
 
-
     return (
         <>
         <main>

@@ -21,6 +21,18 @@ const filterReducer = (state, action) => {
         case "TOGGLE_GAMING":
             return {...state, gamingOnly : !state.gamingOnly};
 
+        case "CLEAR":
+            return {
+                ...state, 
+                sortBy: null,
+                rating : null,
+                laptopOnly: false,
+                phoneOnly: false,
+                headPhoneOnly: false,
+                gamingOnly: false,
+                priceRange: 50000
+            };
+
         default:
             return state;
     }

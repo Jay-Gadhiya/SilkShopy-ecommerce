@@ -7,7 +7,7 @@ const useFilter = () => useContext(FilterContext);
 const FilterProvider = ({children}) => {
 
     const [state, dispatch] = useReducer(filterReducer, {
-        sortBy: null,
+        sortBy: "",
         rating : null,
         showAllProducts: true,
         laptopOnly: false,

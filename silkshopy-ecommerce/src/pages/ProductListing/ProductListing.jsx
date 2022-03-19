@@ -14,8 +14,8 @@ const ProductListing = () => {
   // filter functions
   const catagoryData = catagoryFilter(product, laptopOnly, phoneOnly, headPhoneOnly, gamingOnly);
   const ratingData = sortByRating(catagoryData, rating);
-  const sortedData = sortByPrice(sortBy, ratingData);
-  const priceRangeData = priceRangeFilter(sortedData, priceRange);
+  const priceRangeData = priceRangeFilter(ratingData, priceRange);
+  const sortedData = sortByPrice(sortBy, priceRangeData);
 
 
   return (
@@ -28,7 +28,7 @@ const ProductListing = () => {
           <h2 className="product-main-heading margin-bottom">Products</h2>
 
           <div className="product-cards">
-            {product && priceRangeData.map((item) => ( <Card key={item.id} productData = {item} /> ))}
+            {product && sortedData.map((item) => ( <Card key={item.id} productData = {item} /> ))}
           </div>
         </main>
         

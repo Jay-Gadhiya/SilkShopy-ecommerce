@@ -1,12 +1,12 @@
-const sortByPrice = (sortBy, ratingData) => {
+const sortByPrice = (sortBy, priceRangeData) => {
 
     if (sortBy === "LOW_TO_HIGH")
-        return ratingData.sort((a, b) => Number(a.price) - Number(b.price));
+        return priceRangeData.sort((a, b) => Number(a.price) - Number(b.price));
 
     if (sortBy === "HIGH_TO_LOW")
-        return ratingData.sort((a, b) => Number(b.price) - Number(a.price));
+        return priceRangeData.sort((a, b) => Number(b.price) - Number(a.price));
 
-    return ratingData;
+    return priceRangeData;
 }
 
 export { sortByPrice };
