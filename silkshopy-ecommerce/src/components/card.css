@@ -15,8 +15,9 @@
   font-weight: 500;
   height: 1.5rem;
   width: 1rem;
+  filter: blur(4px);
 
-  animation-duration: 1.2s;
+  animation-duration: 1.3s;
   animation-name: move;
   animation-iteration-count: infinite;
   animation-direction: forward;
@@ -28,7 +29,7 @@
 @keyframes move {
   from {
     transform: skewX(-25deg);
-    opacity: 0.25;
+    opacity: 0.6;
   }
 
   to {
