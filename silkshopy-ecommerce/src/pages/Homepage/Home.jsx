@@ -86,17 +86,7 @@ const Home = () => {
 
             <div className="feature-grid-layout feat-grid-cards">
                     {product && product.filter((item, index) => index <= 3).map(item => (
-                        <Card 
-                        key={item.id}
-                        image = {item.img}
-                        title = {item.title}
-                        description = {item.description}
-                        price = {item.price}
-                        cutPrice = {item.cutPrice}
-                        discount = {item.discount}
-                        rating = {item.rating}
-                        badge = {item.badge}
-                    />
+                        <Card key={item.id} productData = {item}/>
                     ))}
             </div>
         </main>
