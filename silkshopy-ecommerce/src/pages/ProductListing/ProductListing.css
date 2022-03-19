@@ -36,6 +36,7 @@ a {
     padding-top: 1.5rem;
     padding-left: 1.3rem;
     padding-right: 1rem;
+    margin-top: 4rem;
     
 }
 
@@ -96,7 +97,7 @@ a {
 .product-cards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    gap: 1rem;
 }
 
 .product-cards .card-wrapper {
@@ -135,5 +136,9 @@ a {
 @media screen and (max-width : 854px) {
     aside {
         display: none;
+    }
+
+    .product-cards {
+        justify-content: space-evenly;
     }
 }

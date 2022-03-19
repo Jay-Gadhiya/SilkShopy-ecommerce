@@ -1,12 +1,15 @@
 import "./card.css";
 
-const Card = ({image, title, description, price, cutPrice, discount, rating, badge}) => {
+const Card = ({productData}) => {
+
+    const {img, title, description, price, cutPrice, discount, rating, badge} = productData;
+
     return (
         <div className="card-wrapper">
             <span className="card-unavailable hide">Currently unavailable</span>
             <div className="card">
             <div className="card-image">
-                <img className="img-cards" src={image} alt="img" />
+                <img className="img-cards" src={img} alt="img" />
                 <span className = {`badge-new ${!badge && "hide"}` } >New</span>
             </div>
             <div className="card-details">

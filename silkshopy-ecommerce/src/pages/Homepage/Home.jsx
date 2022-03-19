@@ -1,26 +1,12 @@
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Card } from "../../components/Card";
 import { Footer } from "../../components/Footer/Footer";
+import { useFetchData } from "../ProductListing/functions/fetch-data";
 import "./Home.css";
-import axios from "axios";
 
 const Home = () => {
 
-    const [product, setProduct] = useState();
-
-    const getProductsData = async() => {
-        try {
-            const res = await axios.get("/api/products");
-            setProduct(() => res.data.products);
-        }
-        catch(error) {
-            console.log(error);
-        }
-    }
-
-    useEffect(() => getProductsData(),[]);
-
+    const { product } = useFetchData();
 
     return (
         <>
@@ -85,18 +71,8 @@ const Home = () => {
             <div className="title-underline"></div>
 
             <div className="feature-grid-layout feat-grid-cards">
-                    {product && product.filter((item, index) => index <= 3).map(item => (
-                        <Card 
-                        key={item.id}
-                        image = {item.img}
-                        title = {item.title}
-                        description = {item.description}
-                        price = {item.price}
-                        cutPrice = {item.cutPrice}
-                        discount = {item.discount}
-                        rating = {item.rating}
-                        badge = {item.badge}
-                    />
+                    {product && product.filter( (item, index) => index <= 3 ).map(item => (
+                        <Card key={item.id} productData = {item}/>
                     ))}
             </div>
         </main>
