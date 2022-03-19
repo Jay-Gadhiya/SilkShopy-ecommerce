@@ -211,7 +211,7 @@ export const products = [
     cutPrice :"16999",
     discount : "12%",
     categoryName: "phone",
-    rating : "4.3",
+    rating : "3.7",
     img : samsungF22,
     badge : false
   },
@@ -224,7 +224,7 @@ export const products = [
     cutPrice :"3990",
     discount : "69%",
     categoryName: "headphone",
-    rating : "4.3",
+    rating : "3.9",
     img : boatRock,
     badge : true
   },
@@ -263,7 +263,7 @@ export const products = [
     cutPrice :"4990",
     discount : "33%",
     categoryName: "headphone",
-    rating : "4.1",
+    rating : "3.7",
     img : sony,
     badge : false
   },
