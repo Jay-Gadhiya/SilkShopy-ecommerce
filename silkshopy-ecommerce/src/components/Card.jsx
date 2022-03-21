@@ -24,11 +24,11 @@ const Card = ({productData}) => {
                     <p>{description}</p>
                     </div>
                     <div class="rating-wrapper margin-bottom">
-                        <section class="number-rating">
-                            <span class="rat-num">{rating}</span>{" "}
-                            <span class="rat-icon"><i class="fas fa-star"></i></span>
+                        <section className="number-rating">
+                            <span className="rat-num">{rating}</span>{" "}
+                            <span className="rat-icon"><i className="fas fa-star"></i></span>
                         </section>
-                        <span class="rat-count">(2,515)</span>
+                        <span className="rat-count">(2,515)</span>
                     </div>
                     <div className="card-price">
                     Rs.

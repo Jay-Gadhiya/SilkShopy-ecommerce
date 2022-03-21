@@ -107,3 +107,27 @@ body {
     font-weight: normal;
 }
 
+/* credential button */
+
+.auth-btn.credential-btn-container {
+    margin-bottom: 1rem;
+    
+}
+
+.btn-primary-outline{
+    width: 100%;
+    text-transform: unset;
+    border-radius: 2px;
+    padding: .45rem;
+    font-weight: 700;
+    color: var(--default-black);
+    border-width: 1px;
+}
+
+.credential-btn-container button:hover{
+    color: #fff;
+}
+
+.auth-btn.auth-btn.credential-btn-container:hover{
+    color: #fff;
+}

@@ -1,7 +1,6 @@
 
 .badge-new {
   background-color: #00a098;
-  /* background-color: #1ebe6e; */
   padding: 2px 8px;
   font-weight: 500;
   font-size: .9rem;
@@ -11,7 +10,6 @@
   position: absolute;
   top: 15px;
   left: 0;
-  color: #fff;
   font-weight: 500;
   height: 1.5rem;
   width: 1rem;
@@ -22,7 +20,6 @@
   animation-iteration-count: infinite;
   animation-direction: forward;
   background-color: white;
-  position: absolute;
   transform: skewX(-25deg);
 }
 
