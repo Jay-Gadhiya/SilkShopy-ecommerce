@@ -24,13 +24,9 @@ const Login = () => {
         setUserData(dummyData);
     }
 
-    // User input values click handler
-    const addUserEmail = (e) => {
-        setUserData((pre) => ({ ...pre, email : e.target.value }))
-    }
-
-    const addUserPassword = (e) => {
-        setUserData((pre) => ({ ...pre, password : e.target.value }))
+    // User input values change handler
+    const userInputValues = (e) => {
+        setUserData((pre) => ({...pre, [e.target.name] : e.target.value }));
     }
 
     // login click handler
@@ -57,12 +53,12 @@ const Login = () => {
     
             <div className="input-container flex margin-bottom width-100">
                 <label htmlFor="email" className="auth-label">Email address</label>
-                <input onChange={(e) => addUserEmail(e)} className="auth-input" type="email" placeholder="Type email" value={userData.email} />
+                <input onChange={ userInputValues } name="email" className="auth-input" type="email" placeholder="Type email" value={userData.email} />
             </div>
     
             <div className="input-container flex margin-bottom width-100">
             <label htmlFor="password" className="auth-label">Password</label>
-            <input onChange={(e) => addUserPassword(e)} className="auth-input" type="password" placeholder="Type password" value={userData.password} />
+            <input onChange={ userInputValues } name="password" className="auth-input" type="password" placeholder="Type password" value={userData.password} />
             </div>
     
             <div className="condition-box flex width-100 margin-bottom">
