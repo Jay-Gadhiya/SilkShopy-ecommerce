@@ -31,10 +31,10 @@ const Card = ({productData}) => {
                         <span className="rat-count">(2,515)</span>
                     </div>
                     <div className="card-price">
-                    Rs.
-                    <span className="price">{price}</span>
-                    <span className="price text-strike-over">Rs.{cutPrice}</span>
-                    <span className="price text-discount">{discount}</span>
+                        Rs.
+                        <span className="price">{price}</span>
+                        <span className="price text-strike-over mr-left">Rs.{cutPrice}</span>
+                        <span className="price text-discount mr-left">{discount}</span>
                     </div>
                     <div className="card-btn">
                     <button className="btn-card btn-primary-card">

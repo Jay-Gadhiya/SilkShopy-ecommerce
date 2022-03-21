@@ -1,3 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.card-price {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  color: #000;
+}
+
+.mr-left {
+  margin-left: .5rem;
+}
 
 .badge-new {
   background-color: #00a098;
