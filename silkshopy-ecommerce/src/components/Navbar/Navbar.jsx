@@ -2,11 +2,13 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/context/authentication-context";
 import { useNavigate } from "react-router";
 import "./Navbar.css";
+import { useCart } from "../../contexts/context/cart-context";
 
 const Navbar = () => {
 
     const navigate = useNavigate();
     const { authState, authDispatch } = useAuth();
+    const { cartState } = useCart();
 
      // user logout click handler
      const logoutClickHandler = (e) => {
@@ -30,15 +32,17 @@ const Navbar = () => {
                     </section>
                     <section className="nav-icons flex-center">
                     {
-                        authState.token === null
-                        ? <button className="btn btn-login btn-primary"><Link className="active-link" to="/login">Login</Link></button>
-                        : <button onClick={logoutClickHandler} className="btn btn-login btn-primary"><Link className="active-link" to="/">Logout</Link></button>
+                        authState.token
+                        ? <button onClick={logoutClickHandler} className="btn btn-login btn-primary"><Link className="active-link" to="/">Logout</Link></button>
+                        : <button className="btn btn-login btn-primary"><Link className="active-link" to="/login">Login</Link></button>
+                         
                     }
                     
         
                     <div className="nav-icons-item flex-center">
                         <span className="icon-shopy"><Link to="/wishlist"><i className="fas fa-heart"></i></Link></span>
                         <span className="below-text">Wishlist</span>
+                        <span className="badge-on-icon badge-wish-position">{ cartState.wishlistProducts }</span>
                     </div>
         
                     <div className="nav-icons-item flex-center">
@@ -46,6 +50,7 @@ const Navbar = () => {
                         <Link to="/cart"><i className="fas fa-shopping-cart"></i></Link>
                         </span>
                         <span className="below-text">Cart</span>
+                        <span className="badge-on-icon  badge-cart-position">{ cartState.cartProducts }</span>
                     </div>
                     </section>
                 </div>

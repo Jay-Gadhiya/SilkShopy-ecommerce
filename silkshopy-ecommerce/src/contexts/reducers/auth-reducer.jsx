@@ -1,5 +1,7 @@
 const authReducer = (authState, authAction) => {
     switch (authAction.type) {
+        case "CHECK_TOKEN":
+            return { ...authState, token : authAction.payload }
 
         case "USER_LOGIN":
             return { ...authState, token : authAction.payload }

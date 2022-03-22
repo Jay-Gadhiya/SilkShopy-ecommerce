@@ -1,8 +1,36 @@
 import "./card.css";
+import axios from "axios";
+import { useCart } from "../contexts/context/cart-context";
+import { useAuth } from "../contexts/context/authentication-context";
+import { useNavigate } from "react-router";
 
-const Card = ({productData}) => {
+
+
+const Card = ({ productData }) => {
 
     const {img, title, description, price, cutPrice, discount, rating, badge} = productData;
+    const { cartDispatch } = useCart();
+    const { authState } = useAuth();
+    const navigate = useNavigate();
+
+    const addToCart = async (item) => {
+
+        if(authState.token){
+            try {
+                const res = await axios.post("/api/user/cart", { cart : item }, { headers : { authorization: authState.token } }); 
+                cartDispatch({type : "ADD_TO_CART", payload : item });
+                console.log(res.data)
+                
+            } catch (error) {
+                alert(error);
+            }
+        }
+        
+        else {
+            navigate("/login");
+        }
+         
+    }
 
     return (
         <div className="card-wrapper">
@@ -37,9 +65,9 @@ const Card = ({productData}) => {
                         <span className="price text-discount mr-left">{discount}</span>
                     </div>
                     <div className="card-btn">
-                    <button className="btn-card btn-primary-card">
+                    <button onClick={ () => addToCart(productData) } className="btn-card btn-primary-card">
                         <span className="icon-card"><i className="fas fa-shopping-cart"></i></span>
-                        <a href="/Product-Listing/product.html" className="active-link">Add to Cart</a>
+                        Add to Cart
                     </button>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-const { createContext, useContext, useReducer } = require("react");
+const { createContext, useContext, useReducer, useEffect, useState } = require("react");
 const { authReducer } = require("../reducers/auth-reducer");
 
 
@@ -8,6 +8,11 @@ const useAuth = () => useContext(AuthContext);
 const AuthProvider = ({children}) => {
 
     const [authState, authDispatch] = useReducer(authReducer, { token : null });
+    const getToken = localStorage.getItem("token");
+
+    useEffect(() => {
+        authDispatch({type : "CHECK_TOKEN", payload : getToken });
+    }, [])
 
 
     return (
