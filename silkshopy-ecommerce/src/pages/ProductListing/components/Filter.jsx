@@ -19,7 +19,7 @@ const Filters = () => {
             </div>
             
             <div className="price-container margin-bottom">
-            <label for="price" className="price font-style">Price</label>
+            <label htmlFor="price" className="price font-style">Price</label>
             <div className="price-devide flex-center">
                 <span className="amount">10k</span>
                 <span className="amount">20k</span>

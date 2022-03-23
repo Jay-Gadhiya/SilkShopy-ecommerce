@@ -3,12 +3,14 @@ import { useAuth } from "../../contexts/context/authentication-context";
 import { useNavigate } from "react-router";
 import "./Navbar.css";
 import { useCart } from "../../contexts/context/cart-context";
+import { useWishList } from "../../contexts/context/wishlist-context";
 
 const Navbar = () => {
 
     const navigate = useNavigate();
     const { authState, authDispatch } = useAuth();
     const { cartState } = useCart();
+    const { wishState } = useWishList();
 
      // user logout click handler
      const logoutClickHandler = (e) => {
@@ -42,7 +44,7 @@ const Navbar = () => {
                     <div className="nav-icons-item flex-center">
                         <span className="icon-shopy"><Link to="/wishlist"><i className="fas fa-heart"></i></Link></span>
                         <span className="below-text">Wishlist</span>
-                        <span className="badge-on-icon badge-wish-position">{ cartState.wishlistProducts }</span>
+                        <span className="badge-on-icon badge-wish-position">{ wishState.itemsPresent }</span>
                     </div>
         
                     <div className="nav-icons-item flex-center">

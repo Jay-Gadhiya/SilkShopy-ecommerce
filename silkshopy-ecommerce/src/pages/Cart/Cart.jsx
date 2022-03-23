@@ -20,6 +20,7 @@ const Cart = () => {
            cartState.cart.length !== 0 
 
            ?
+
            <> 
            <main className="purchase-area flex">
                 <div className="column-cards">
@@ -36,6 +37,7 @@ const Cart = () => {
             </>
 
             :
+            
             <div className="empty-cart" >
                 <img className="empty-cart-img" src= {emptyCart} alt="image" />
                 {

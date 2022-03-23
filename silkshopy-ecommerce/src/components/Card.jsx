@@ -4,6 +4,7 @@ import { useCart } from "../contexts/context/cart-context";
 import { useAuth } from "../contexts/context/authentication-context";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
+import { useWishList } from "../contexts/context/wishlist-context";
 
 
 
@@ -11,6 +12,7 @@ const Card = ({ productData }) => {
 
     const {img, title, description, price, cutPrice, discount, rating, badge} = productData;
     const { cartState, cartDispatch } = useCart();
+    const { wishState, wishDispatch } = useWishList();
     const { authState } = useAuth();
     const navigate = useNavigate();
 
@@ -32,7 +34,22 @@ const Card = ({ productData }) => {
          
     }
 
+    const addToWishList = async (item) => {
+        
+        if(authState.token){
+            try {
+                const res = await axios.post("/api/user/wishlist", { product : item }, { headers : { authorization: authState.token } }); 
+                wishDispatch({ type: "ADD_TO_WISHLIST", payload : item });
 
+            } catch (error) {
+                alert(error);
+            }
+        }
+        
+        else {
+            navigate("/login");
+        }
+    }
 
     return (
         <div className="card-wrapper">
@@ -46,14 +63,12 @@ const Card = ({ productData }) => {
             <div className="card-details">
                 <div className="card-item">
                     <h1 className="card-product-name">{title}</h1>
-                    <span className="icon-card icon-heart"
-                        ><i className="fas fa-heart"></i
-                    ></span>
+                    <span onClick={ () => addToWishList(productData) } className="icon-card icon-heart"><i className="fas fa-heart"></i></span>
                     </div>
                     <div className="card-brief-detail">
                     <p>{description}</p>
                     </div>
-                    <div class="rating-wrapper margin-bottom">
+                    <div className="rating-wrapper margin-bottom">
                         <section className="number-rating">
                             <span className="rat-num">{rating}</span>{" "}
                             <span className="rat-icon"><i className="fas fa-star"></i></span>

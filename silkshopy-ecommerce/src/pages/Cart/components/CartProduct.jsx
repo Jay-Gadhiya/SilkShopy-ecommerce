@@ -6,7 +6,7 @@ import { useCart } from "../../../contexts/context/cart-context";
 const CartProduct = ({ product }) => {
      
     const { title, description, price, cutPrice, discount, rating, img, badge } = product;
-    const { cartState, cartDispatch } = useCart();
+    const { cartDispatch } = useCart();
     const { authState } = useAuth();
 
     //  remove from cart
@@ -43,8 +43,6 @@ const CartProduct = ({ product }) => {
                 <div className="horizontal-card">
                 <div className="card-horizontal-image">
                     <img className="img-cards horizontal-img" src= {img} alt="img" />
-                    {/* <span className={`badge-new ${!badge && "hide"}` }>New</span> */}
-                    <span className="delete-icon hide">&times;</span>
                 </div>
                 <div className="card-details">
                     <div className="card-item">
