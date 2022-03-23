@@ -51,6 +51,8 @@ const Card = ({ productData }) => {
         }
     }
 
+    const liked = wishState.wishListProducts.find( item => item._id === productData._id);
+
     return (
         <div className="card-wrapper">
             <span className="card-unavailable hide">Currently unavailable</span>
@@ -62,8 +64,8 @@ const Card = ({ productData }) => {
             </div>
             <div className="card-details">
                 <div className="card-item">
-                    <h1 className="card-product-name">{title}</h1>
-                    <span onClick={ () => addToWishList(productData) } className="icon-card icon-heart"><i className="fas fa-heart"></i></span>
+                    <h1 className="card-product-name roboto">{title}</h1>
+                    <span onClick={ () => addToWishList(productData) } className={`icon-card icon-heart ${ liked && "liked" }`}><i className="fas fa-heart heart-icon"></i></span>
                     </div>
                     <div className="card-brief-detail">
                     <p>{description}</p>

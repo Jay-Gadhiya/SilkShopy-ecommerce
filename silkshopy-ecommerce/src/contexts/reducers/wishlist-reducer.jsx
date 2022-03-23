@@ -2,9 +2,11 @@ const WishListReducer = (state, action) => {
     switch (action.type) {
 
         case "ADD_TO_WISHLIST":
+            const itemPresentOrNot = state.wishListProducts.find( item => item._id === action.payload._id);
+
             return { ...state, 
-                wishListProducts : [...state.wishListProducts, {...action.payload}],
-                itemsPresent : state.itemsPresent + 1
+                wishListProducts :   itemPresentOrNot ? [...state.wishListProducts] :[...state.wishListProducts, {...action.payload}],
+                itemsPresent : itemPresentOrNot ? state.itemsPresent : state.itemsPresent + 1
               } 
 
         case "REMOVE_FROM_WISHLIST" :

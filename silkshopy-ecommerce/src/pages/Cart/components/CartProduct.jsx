@@ -2,12 +2,15 @@ import "./cartProduct.css";
 import axios from "axios";
 import { useAuth } from "../../../contexts/context/authentication-context";
 import { useCart } from "../../../contexts/context/cart-context";
+import { useWishList } from "../../../contexts/context/wishlist-context";
+import { Link } from "react-router-dom";
 
 const CartProduct = ({ product }) => {
      
     const { title, description, price, cutPrice, discount, rating, img, badge } = product;
     const { cartDispatch } = useCart();
     const { authState } = useAuth();
+    const { wishState, wishDispatch } = useWishList();
 
     //  remove from cart
     const removeFromCart = async (item) => {
@@ -35,6 +38,10 @@ const CartProduct = ({ product }) => {
 
     const decreaseQuantity = (item) => {
         cartDispatch({ type : "DECREASE_QUANTITY", payload : item });
+    }
+
+    const moveToWishList = (item) => {
+        wishDispatch({ type: "ADD_TO_WISHLIST", payload : item });
     }
 
     return (
@@ -72,9 +79,20 @@ const CartProduct = ({ product }) => {
                     <button onClick={ () => removeFromCart(product) } className="btn-card btn-primary-card">
                         Remove from Cart
                     </button>
-                    <button className="btn-card btn-wishlist">
-                        Move to Wishlist
-                    </button>
+                    
+                   {
+                       wishState.wishListProducts.find( item => item._id === product._id )
+                       ?     
+                       <button className="btn-card btn-wishlist">
+                         <Link to="/wishList">Go To Wish List</Link> 
+                       </button>   
+                       :
+                       <button onClick={ () => moveToWishList(product) } className="btn-card btn-wishlist">
+                         Move To Wish List
+                       </button>      
+                   } 
+ 
+                    
                     </div>
                 </div>
                 </div>
