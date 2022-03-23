@@ -6,6 +6,11 @@
   color: #000;
 }
 
+.btn-bg-color {
+  background-color: #ff9f00;
+  font-weight: 600;
+}
+
 .mr-left {
   margin-left: .5rem;
 }
@@ -33,6 +38,7 @@
   background-color: white;
   transform: skewX(-25deg);
 }
+
 
 @keyframes move {
   from {

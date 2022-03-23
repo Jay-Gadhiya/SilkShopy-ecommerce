@@ -1,3 +1,4 @@
+import "./cartProduct.css";
 import axios from "axios";
 import { useAuth } from "../../../contexts/context/authentication-context";
 import { useCart } from "../../../contexts/context/cart-context";
@@ -5,9 +6,10 @@ import { useCart } from "../../../contexts/context/cart-context";
 const CartProduct = ({ product }) => {
      
     const { title, description, price, cutPrice, discount, rating, img, badge } = product;
-    const { cartDispatch } = useCart();
+    const { cartState, cartDispatch } = useCart();
     const { authState } = useAuth();
 
+    //  remove from cart
     const removeFromCart = async (item) => {
         console.log(item._id);
 
@@ -24,8 +26,15 @@ const CartProduct = ({ product }) => {
         
         else {
             navigate("/login");
-        }
-         
+        } 
+    }
+
+    const increaseQuantity = (item) => {
+        cartDispatch({ type : "INCREASE_QUANTITY", payload : item });
+    }
+
+    const decreaseQuantity = (item) => {
+        cartDispatch({ type : "DECREASE_QUANTITY", payload : item });
     }
 
     return (
@@ -48,17 +57,17 @@ const CartProduct = ({ product }) => {
                     </p>
                     </div>
                     <div className="card-price">
-                    Rs.
-                    <span className="price">{price}</span>
-                    <span className="price text-strike-over">Rs.{cutPrice}</span>
-                    <span className="price text-discount">{discount}</span>
+                        Rs.
+                        <span className="price">{price}</span>
+                        <span className="price text-strike-over mr-left">Rs.{cutPrice}</span>
+                        <span className="price text-discount mr-left">{discount}</span>
                     </div>
 
                     <div className="quantity flex">
                     <label htmlFor="quantity">Quantity :</label>
-                    <button className="quantity-btn">-</button>
-                    <span className="quantity-number">1</span>
-                    <button className="quantity-btn">+</button>
+                    <button  onClick={ () => decreaseQuantity(product) } disabled={product.quantity <= 1 && true} className="quantity-btn">-</button>
+                    <span className="quantity-number">{ product.quantity }</span>
+                    <button onClick={ () => increaseQuantity(product) } className="quantity-btn">+</button>
                     </div>
 
                     <div className="card-btn-horizontal">

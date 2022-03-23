@@ -3,13 +3,14 @@ import axios from "axios";
 import { useCart } from "../contexts/context/cart-context";
 import { useAuth } from "../contexts/context/authentication-context";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
 
 
 const Card = ({ productData }) => {
 
     const {img, title, description, price, cutPrice, discount, rating, badge} = productData;
-    const { cartDispatch } = useCart();
+    const { cartState, cartDispatch } = useCart();
     const { authState } = useAuth();
     const navigate = useNavigate();
 
@@ -19,7 +20,6 @@ const Card = ({ productData }) => {
             try {
                 const res = await axios.post("/api/user/cart", { cart : item }, { headers : { authorization: authState.token } }); 
                 cartDispatch({type : "ADD_TO_CART", payload : item });
-                console.log(res.data)
                 
             } catch (error) {
                 alert(error);
@@ -31,6 +31,8 @@ const Card = ({ productData }) => {
         }
          
     }
+
+
 
     return (
         <div className="card-wrapper">
@@ -65,10 +67,20 @@ const Card = ({ productData }) => {
                         <span className="price text-discount mr-left">{discount}</span>
                     </div>
                     <div className="card-btn">
-                    <button onClick={ () => addToCart(productData) } className="btn-card btn-primary-card">
-                        <span className="icon-card"><i className="fas fa-shopping-cart"></i></span>
-                        Add to Cart
-                    </button>
+                    {
+                        cartState.cart.find(item => item._id === productData._id )
+
+                        ? <button className="btn-card btn-primary-card btn-bg-color">
+                            <span className="icon-card"><i className="fas fa-shopping-cart"></i></span>
+                            <Link to="/cart" >Go To Cart</Link>
+                          </button> 
+
+                        : <button onClick={ () => addToCart(productData) } className="btn-card btn-primary-card">
+                            <span className="icon-card"><i className="fas fa-shopping-cart"></i></span>
+                            Add To Cart
+                          </button>
+                    }
+                    
                 </div>
             </div>
             </div>

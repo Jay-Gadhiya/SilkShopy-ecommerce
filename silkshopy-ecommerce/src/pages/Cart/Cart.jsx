@@ -22,7 +22,7 @@ const Cart = () => {
            <main className="purchase-area flex">
                 <div className="column-cards">
 
-                    {cartState.cart && cartState.cart.map(item => (
+                    {cartState.cart.map(item => (
                          <CartProduct key={ item.id } product = { item } />
                     )) }
 
