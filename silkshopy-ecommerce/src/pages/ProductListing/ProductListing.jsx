@@ -17,7 +17,6 @@ const ProductListing = () => {
   const priceRangeData = priceRangeFilter(ratingData, priceRange);
   const sortedData = sortByPrice(sortBy, priceRangeData);
 
-
   return (
     <>
       <div className="page-container">
@@ -28,7 +27,7 @@ const ProductListing = () => {
           <h2 className="product-main-heading margin-bottom">Products</h2>
 
           <div className="product-cards">
-            {product && sortedData.map((item) => ( <Card key={item.id} productData = {item} /> ))}
+            {product && sortedData.map((item) => ( <Card key={item.id} productData = {item}  /> ))}
           </div>
         </main>
         

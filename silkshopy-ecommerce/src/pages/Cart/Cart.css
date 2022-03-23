@@ -120,6 +120,36 @@ body {
     margin-top: .5rem;
 }
 
+.empty-cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 3rem;
+}
+
+.empty-cart-img {
+    width: 100%;
+    max-width: 12rem;
+    height: auto;
+    background-color: transparent;
+}
+
+.subtext-cart {
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin: 1rem 0;
+}
+
+.pd-left {
+    margin-left: 2rem;
+}
+
+.btn.cart-btn {
+    width: 13rem;
+}
+
 
 @media screen and (max-width : 1000px) {
 

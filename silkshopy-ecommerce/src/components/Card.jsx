@@ -1,8 +1,38 @@
 import "./card.css";
+import axios from "axios";
+import { useCart } from "../contexts/context/cart-context";
+import { useAuth } from "../contexts/context/authentication-context";
+import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
-const Card = ({productData}) => {
+
+
+const Card = ({ productData }) => {
 
     const {img, title, description, price, cutPrice, discount, rating, badge} = productData;
+    const { cartState, cartDispatch } = useCart();
+    const { authState } = useAuth();
+    const navigate = useNavigate();
+
+    const addToCart = async (item) => {
+
+        if(authState.token){
+            try {
+                const res = await axios.post("/api/user/cart", { cart : item }, { headers : { authorization: authState.token } }); 
+                cartDispatch({type : "ADD_TO_CART", payload : item });
+                
+            } catch (error) {
+                alert(error);
+            }
+        }
+        
+        else {
+            navigate("/login");
+        }
+         
+    }
+
+
 
     return (
         <div className="card-wrapper">
@@ -31,16 +61,26 @@ const Card = ({productData}) => {
                         <span className="rat-count">(2,515)</span>
                     </div>
                     <div className="card-price">
-                    Rs.
-                    <span className="price">{price}</span>
-                    <span className="price text-strike-over">Rs.{cutPrice}</span>
-                    <span className="price text-discount">{discount}</span>
+                        Rs.
+                        <span className="price">{price}</span>
+                        <span className="price text-strike-over mr-left">Rs.{cutPrice}</span>
+                        <span className="price text-discount mr-left">{discount}</span>
                     </div>
                     <div className="card-btn">
-                    <button className="btn-card btn-primary-card">
-                        <span className="icon-card"><i className="fas fa-shopping-cart"></i></span>
-                        <a href="/Product-Listing/product.html" className="active-link">Add to Cart</a>
-                    </button>
+                    {
+                        cartState.cart.find(item => item._id === productData._id )
+
+                        ? <button className="btn-card btn-primary-card btn-bg-color">
+                            <span className="icon-card"><i className="fas fa-shopping-cart"></i></span>
+                            <Link to="/cart" >Go To Cart</Link>
+                          </button> 
+
+                        : <button onClick={ () => addToCart(productData) } className="btn-card btn-primary-card">
+                            <span className="icon-card"><i className="fas fa-shopping-cart"></i></span>
+                            Add To Cart
+                          </button>
+                    }
+                    
                 </div>
             </div>
             </div>

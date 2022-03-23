@@ -28,5 +28,9 @@ import miBass from "./mi-bass.jpeg";
 import noise from "./noise-headphone.jpeg";
 import sony from "./sony-headphone.jpeg";
 
+// empty cart image
 
-export {asusFlip, dellInspiron, lenovoIdeapad, realmeBookSlim, googlePixel, pocoC31, realmeNarzo, realmeSe, hpGaming, acerNitro, redmi10t, asusRog, boatRock, miBass, noise, sony, asusTuff, msi, samsungF22, samsungFe};
+import emptyCart from "./cart-empty.png";
+
+
+export {asusFlip, dellInspiron, lenovoIdeapad, realmeBookSlim, googlePixel, pocoC31, realmeNarzo, realmeSe, hpGaming, acerNitro, redmi10t, asusRog, boatRock, miBass, noise, sony, asusTuff, msi, samsungF22, samsungFe, emptyCart};
