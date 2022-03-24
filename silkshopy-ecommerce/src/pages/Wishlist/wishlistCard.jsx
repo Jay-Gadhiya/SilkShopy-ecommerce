@@ -3,23 +3,16 @@ import { useAuth } from "../../contexts/context/authentication-context";
 import { useWishList } from "../../contexts/context/wishlist-context";
 import { useCart } from "../../contexts/context/cart-context";
 import { Link } from "react-router-dom";
-
+import { removeFromWishList } from "../../Utilities-Functions/removeFromWishlist";
+import { addToCart } from "../../Utilities-Functions/addToCart";
 
 const WishListCard = ({ product }) => {
 
+    console.log("wishlist card",product);
     const { img, title, description, price, cutPrice, discount, rating, badge } = product;
     const { authState } = useAuth();
     const { wishDispatch } = useWishList();
     const { cartState, cartDispatch } = useCart();
-
-    const removeFromWishList = (item) => {
-        wishDispatch({type : "REMOVE_FROM_WISHLIST", payload : item });
-    }
-
-    const moveToCart = (item) => {
-        cartDispatch({type : "ADD_TO_CART", payload : item });
-    }
-
 
     return (
         <div className="card-wrapper js-dismiss box-shadow">
@@ -29,7 +22,7 @@ const WishListCard = ({ product }) => {
                 <img className="img-cards" src={img} alt="img" />
                 <span className = {`badge-new ${!badge && "hide"}` } >Best Value</span>
                 <span className={`${badge && "animate"}`}></span>
-                <span onClick={() => removeFromWishList(product)} className="delete-icon">&times;</span>
+                <span onClick={() => removeFromWishList(product, authState, wishDispatch)} className="delete-icon">&times;</span>
                 </div>
                 <div className="card-details">
                 <div className="card-item">
@@ -38,6 +31,13 @@ const WishListCard = ({ product }) => {
                 </div>
                 <div className="card-brief-detail">
                     <p> { description } </p>
+                </div>
+                <div className="rating-wrapper margin-bottom">
+                        <section className="number-rating">
+                            <span className="rat-num">{rating}</span>{" "}
+                            <span className="rat-icon"><i className="fas fa-star"></i></span>
+                        </section>
+                        <span className="rat-count">(2,515)</span>
                 </div>
                 <div className="card-price">
                     Rs.
@@ -55,7 +55,7 @@ const WishListCard = ({ product }) => {
                             <Link to="/cart" >Go To Cart</Link>
                           </button> 
 
-                        : <button onClick={ () => moveToCart(product) } className="btn-card btn-primary-card">
+                        : <button onClick={ () => addToCart(product, authState, cartDispatch) } className="btn-card btn-primary-card">
                             <span className ="icon-card"><i className="fas fa-shopping-cart"></i></span>
                             Move To Cart
                           </button>

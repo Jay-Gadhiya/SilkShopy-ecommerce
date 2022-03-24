@@ -11,6 +11,7 @@ const Wishlist = () => {
 
     const { wishState } = useWishList();
     const { authState } = useAuth();
+    console.log("wishlist page", wishState.wishListProducts);
 
 
     return (
@@ -27,6 +28,7 @@ const Wishlist = () => {
 
                     {
                         wishState.wishListProducts.map( item => <WishListCard key={item._id} product = {item} /> )
+                        
                     }
 
                     </section>
@@ -42,12 +44,12 @@ const Wishlist = () => {
                     ?
                     <>
                     <p className=" subtext-cart pd-left">Your Wish List is empty!</p>
-                    <button class="btn btn-primary cart-btn pd-left"> <Link to="/productListing">Check Products Now</Link></button>
+                    <button className="btn btn-primary cart-btn pd-left"> <Link to="/productListing">Check Products Now</Link></button>
                     </> 
                     :
                     <>
                     <p className=" subtext-cart pd-left">Login to see the items in Wish List</p>
-                    <button class="btn btn-primary cart-btn pd-left"> <Link to="/login">Login Now</Link></button>
+                    <button className="btn btn-primary cart-btn pd-left"> <Link to="/login">Login Now</Link></button>
                     </>
                 }
                 

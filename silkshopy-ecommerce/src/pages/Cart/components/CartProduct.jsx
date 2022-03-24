@@ -4,40 +4,35 @@ import { useAuth } from "../../../contexts/context/authentication-context";
 import { useCart } from "../../../contexts/context/cart-context";
 import { useWishList } from "../../../contexts/context/wishlist-context";
 import { Link } from "react-router-dom";
+import { removeFromCart } from "../../../Utilities-Functions/removeFromCart";
 
 const CartProduct = ({ product }) => {
      
-    const { title, description, price, cutPrice, discount, rating, img, badge } = product;
+    const { title, description, price, cutPrice, discount, img, qty} = product;
     const { cartDispatch } = useCart();
     const { authState } = useAuth();
     const { wishState, wishDispatch } = useWishList();
 
-    //  remove from cart
-    const removeFromCart = async (item) => {
-        console.log(item._id);
+    const increaseQuantity = async (item) => {
+        try {
+            const res = await axios.post(`/api/user/cart/${item._id}`, { action : { type: "increment" } }, { headers : { authorization: authState.token } }); 
+            cartDispatch({ type : "INCREASE_QUANTITY", payload : res.data.cart });
+            
+        } catch (error) {
+            alert(error);
+        }
+    }
+    
 
-        if(authState.token){
-            try {
-                const res = await axios.delete(`/api/user/cart/${item._id}`, { headers : { authorization: authState.token } }); 
-                cartDispatch({type : "REMOVE_FROM_CART", payload : item });
-                console.log(res);
-                
-            } catch (error) {
-                alert(error);
-            }
+    const decreaseQuantity = async (item) => {
+        try {
+            const res = await axios.post(`/api/user/cart/${item._id}`, { action : { type: "decrement" } }, { headers : { authorization: authState.token } }); 
+            cartDispatch({ type : "DECREASE_QUANTITY", payload : res.data.cart });
+            
+        } catch (error) {
+            alert(error);
         }
         
-        else {
-            navigate("/login");
-        } 
-    }
-
-    const increaseQuantity = (item) => {
-        cartDispatch({ type : "INCREASE_QUANTITY", payload : item });
-    }
-
-    const decreaseQuantity = (item) => {
-        cartDispatch({ type : "DECREASE_QUANTITY", payload : item });
     }
 
     const moveToWishList = (item) => {
@@ -70,13 +65,13 @@ const CartProduct = ({ product }) => {
 
                     <div className="quantity flex">
                     <label htmlFor="quantity">Quantity :</label>
-                    <button  onClick={ () => decreaseQuantity(product) } disabled={product.quantity <= 1 && true} className="quantity-btn">-</button>
-                    <span className="quantity-number">{ product.quantity }</span>
+                    <button  onClick={ () => decreaseQuantity(product) } disabled={product.qty <= 1 && true} className="quantity-btn">-</button>
+                    <span className="quantity-number">{ qty }</span>
                     <button onClick={ () => increaseQuantity(product) } className="quantity-btn">+</button>
                     </div>
 
                     <div className="card-btn-horizontal">
-                    <button onClick={ () => removeFromCart(product) } className="btn-card btn-primary-card">
+                    <button onClick={ () => removeFromCart(product, authState, cartDispatch) } className="btn-card btn-primary-card">
                         Remove from Cart
                     </button>
                     

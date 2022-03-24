@@ -5,8 +5,9 @@ import { useAuth } from "../contexts/context/authentication-context";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { useWishList } from "../contexts/context/wishlist-context";
-
-
+import { removeFromWishList } from "../Utilities-Functions/removeFromWishlist";
+import { addToCart } from "../Utilities-Functions/addToCart";
+import { addToWishList } from "../Utilities-Functions/addToWishList";
 
 const Card = ({ productData }) => {
 
@@ -15,41 +16,6 @@ const Card = ({ productData }) => {
     const { wishState, wishDispatch } = useWishList();
     const { authState } = useAuth();
     const navigate = useNavigate();
-
-    const addToCart = async (item) => {
-
-        if(authState.token){
-            try {
-                const res = await axios.post("/api/user/cart", { cart : item }, { headers : { authorization: authState.token } }); 
-                cartDispatch({type : "ADD_TO_CART", payload : item });
-                
-            } catch (error) {
-                alert(error);
-            }
-        }
-        
-        else {
-            navigate("/login");
-        }
-         
-    }
-
-    const addToWishList = async (item) => {
-        
-        if(authState.token){
-            try {
-                const res = await axios.post("/api/user/wishlist", { product : item }, { headers : { authorization: authState.token } }); 
-                wishDispatch({ type: "ADD_TO_WISHLIST", payload : item });
-
-            } catch (error) {
-                alert(error);
-            }
-        }
-        
-        else {
-            navigate("/login");
-        }
-    }
 
     const liked = wishState.wishListProducts.find( item => item._id === productData._id);
 
@@ -65,7 +31,15 @@ const Card = ({ productData }) => {
             <div className="card-details">
                 <div className="card-item">
                     <h1 className="card-product-name roboto">{title}</h1>
-                    <span onClick={ () => addToWishList(productData) } className={`icon-card icon-heart ${ liked && "liked" }`}><i className="fas fa-heart heart-icon"></i></span>
+
+                    {
+                        wishState.wishListProducts.find(item => item._id === productData._id)
+                        ?
+                        <span onClick={ () => removeFromWishList(productData, authState, wishDispatch) } className={`icon-card icon-heart ${ liked && "liked" }`}><i className="fas fa-heart heart-icon"></i></span>
+                        :
+                        <span onClick={ () => addToWishList(productData, authState, wishDispatch, navigate) } className={`icon-card icon-heart ${ liked && "liked" }`}><i className="fas fa-heart heart-icon"></i></span>
+                    }
+
                     </div>
                     <div className="card-brief-detail">
                     <p>{description}</p>
@@ -92,7 +66,7 @@ const Card = ({ productData }) => {
                             <Link to="/cart" >Go To Cart</Link>
                           </button> 
 
-                        : <button onClick={ () => addToCart(productData) } className="btn-card btn-primary-card">
+                        : <button onClick={ () => addToCart(productData, authState, cartDispatch, navigate) } className="btn-card btn-primary-card">
                             <span className="icon-card"><i className="fas fa-shopping-cart"></i></span>
                             Add To Cart
                           </button>
