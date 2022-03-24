@@ -1,7 +1,6 @@
 const catagoryFilter = (productsData, laptopOnly, phoneOnly, headPhoneOnly, gamingOnly) => {
 
     let filteredData = [];
-    console.log(filteredData);
     
     if(laptopOnly === false && phoneOnly === false && headPhoneOnly === false && gamingOnly === false)
         return productsData;

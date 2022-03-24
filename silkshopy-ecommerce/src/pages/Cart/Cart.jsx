@@ -20,6 +20,7 @@ const Cart = () => {
            cartState.cart.length !== 0 
 
            ?
+
            <> 
            <main className="purchase-area flex">
                 <div className="column-cards">
@@ -36,6 +37,7 @@ const Cart = () => {
             </>
 
             :
+            
             <div className="empty-cart" >
                 <img className="empty-cart-img" src= {emptyCart} alt="image" />
                 {
@@ -43,12 +45,12 @@ const Cart = () => {
                     ?
                     <>
                     <p className=" subtext-cart pd-left">Your cart is empty!</p>
-                    <button class="btn btn-primary cart-btn pd-left"> <Link to="/productListing">Shop Now</Link></button>
+                    <button className="btn btn-primary cart-btn pd-left"> <Link to="/productListing">Shop Now</Link></button>
                     </>
                     :
                     <>
                     <p className=" subtext-cart pd-left">Login to see the items in cart</p>
-                    <button class="btn btn-primary cart-btn pd-left"> <Link to="/login">Login Now</Link></button>
+                    <button className="btn btn-primary cart-btn pd-left"> <Link to="/login">Login Now</Link></button>
                     </>
                 }
                 

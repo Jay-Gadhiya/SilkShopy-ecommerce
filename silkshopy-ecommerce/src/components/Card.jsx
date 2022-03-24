@@ -4,35 +4,20 @@ import { useCart } from "../contexts/context/cart-context";
 import { useAuth } from "../contexts/context/authentication-context";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
-
-
+import { useWishList } from "../contexts/context/wishlist-context";
+import { removeFromWishList } from "../Utilities-Functions/removeFromWishlist";
+import { addToCart } from "../Utilities-Functions/addToCart";
+import { addToWishList } from "../Utilities-Functions/addToWishList";
 
 const Card = ({ productData }) => {
 
     const {img, title, description, price, cutPrice, discount, rating, badge} = productData;
     const { cartState, cartDispatch } = useCart();
+    const { wishState, wishDispatch } = useWishList();
     const { authState } = useAuth();
     const navigate = useNavigate();
 
-    const addToCart = async (item) => {
-
-        if(authState.token){
-            try {
-                const res = await axios.post("/api/user/cart", { cart : item }, { headers : { authorization: authState.token } }); 
-                cartDispatch({type : "ADD_TO_CART", payload : item });
-                
-            } catch (error) {
-                alert(error);
-            }
-        }
-        
-        else {
-            navigate("/login");
-        }
-         
-    }
-
-
+    const liked = wishState.wishListProducts.find( item => item._id === productData._id);
 
     return (
         <div className="card-wrapper">
@@ -45,15 +30,21 @@ const Card = ({ productData }) => {
             </div>
             <div className="card-details">
                 <div className="card-item">
-                    <h1 className="card-product-name">{title}</h1>
-                    <span className="icon-card icon-heart"
-                        ><i className="fas fa-heart"></i
-                    ></span>
+                    <h1 className="card-product-name roboto">{title}</h1>
+
+                    {
+                        wishState.wishListProducts.find(item => item._id === productData._id)
+                        ?
+                        <span onClick={ () => removeFromWishList(productData, authState, wishDispatch) } className={`icon-card icon-heart ${ liked && "liked" }`}><i className="fas fa-heart heart-icon"></i></span>
+                        :
+                        <span onClick={ () => addToWishList(productData, authState, wishDispatch, navigate) } className={`icon-card icon-heart ${ liked && "liked" }`}><i className="fas fa-heart heart-icon"></i></span>
+                    }
+
                     </div>
                     <div className="card-brief-detail">
                     <p>{description}</p>
                     </div>
-                    <div class="rating-wrapper margin-bottom">
+                    <div className="rating-wrapper margin-bottom">
                         <section className="number-rating">
                             <span className="rat-num">{rating}</span>{" "}
                             <span className="rat-icon"><i className="fas fa-star"></i></span>
@@ -75,7 +66,7 @@ const Card = ({ productData }) => {
                             <Link to="/cart" >Go To Cart</Link>
                           </button> 
 
-                        : <button onClick={ () => addToCart(productData) } className="btn-card btn-primary-card">
+                        : <button onClick={ () => addToCart(productData, authState, cartDispatch, navigate) } className="btn-card btn-primary-card">
                             <span className="icon-card"><i className="fas fa-shopping-cart"></i></span>
                             Add To Cart
                           </button>

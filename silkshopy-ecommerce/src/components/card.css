@@ -39,6 +39,25 @@
   transform: skewX(-25deg);
 }
 
+.heart-icon {
+  font-size: 1.1rem;
+}
+
+.heart-icon:hover {
+  color: #ff0000;
+  transform: scale(1.4);
+  transition-duration: .2s;
+}
+
+
+.liked {
+  color: #ff0000;
+}
+
+.roboto {
+  font-family: 'Roboto', sans-serif;
+}
+
 
 @keyframes move {
   from {
