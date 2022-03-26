@@ -4,6 +4,7 @@ import "./Authentication.css";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import { useAuth } from "../../contexts/context/authentication-context";
+import { toast } from 'react-toastify';
 
 
 const Signup = () => {
@@ -33,6 +34,16 @@ const Signup = () => {
           navigate("/productListing");
           authDispatch({ type : "USER_SIGNUP", payload : response.data.encodedToken });
 
+          toast.success("Sign Up Successfully", {
+            position: "bottom-center",
+            autoClose: 1100,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme : "colored"
+            });
 
         } catch (error) {
             console.log(error);

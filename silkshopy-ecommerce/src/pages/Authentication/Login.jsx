@@ -4,6 +4,7 @@ import { useAuth } from "../../contexts/context/authentication-context";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
+import { toast } from 'react-toastify';
 
 
 const Login = () => {
@@ -38,6 +39,17 @@ const Login = () => {
             localStorage.setItem("token", response.data.encodedToken);
             authDispatch({ type : "USER_LOGIN", payload : response.data.encodedToken })
             navigate("/productlisting");
+
+            toast.success("Login Successfully", {
+                position: "bottom-center",
+                autoClose: 1100,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme : "colored"
+                });
 
         } catch (error) {
             alert("please enter valid user name or password");
