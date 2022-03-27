@@ -5,6 +5,7 @@ import { useCart } from "../../../contexts/context/cart-context";
 import { useWishList } from "../../../contexts/context/wishlist-context";
 import { Link } from "react-router-dom";
 import { removeFromCart } from "../../../Utilities-Functions/removeFromCart";
+import { addToWishList } from "../../../Utilities-Functions/addToWishList";
 
 const CartProduct = ({ product }) => {
      
@@ -33,10 +34,6 @@ const CartProduct = ({ product }) => {
             alert(error);
         }
         
-    }
-
-    const moveToWishList = (item) => {
-        wishDispatch({ type: "ADD_TO_WISHLIST", payload : item });
     }
 
     return (
@@ -82,7 +79,7 @@ const CartProduct = ({ product }) => {
                          <Link to="/wishList">Go To Wish List</Link> 
                        </button>   
                        :
-                       <button onClick={ () => moveToWishList(product) } className="btn-card btn-wishlist">
+                       <button onClick={ () => addToWishList(product, authState, wishDispatch) } className="btn-card btn-wishlist">
                          Move To Wish List
                        </button>      
                    } 

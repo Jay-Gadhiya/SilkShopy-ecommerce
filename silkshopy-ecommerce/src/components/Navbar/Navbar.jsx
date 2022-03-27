@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import "./Navbar.css";
 import { useCart } from "../../contexts/context/cart-context";
 import { useWishList } from "../../contexts/context/wishlist-context";
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
 
@@ -17,6 +18,18 @@ const Navbar = () => {
         localStorage.removeItem("token");
         authDispatch({ type : "USER_LOGOUT"});
         navigate("/");
+
+        toast.success("Log Out Successfully", {
+            position: "bottom-center",
+            autoClose: 1100,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme : "colored"
+        });
+
     }
 
     return (
