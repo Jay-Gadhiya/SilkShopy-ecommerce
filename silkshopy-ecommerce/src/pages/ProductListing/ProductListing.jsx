@@ -9,10 +9,15 @@ const ProductListing = () => {
 
   const  { product }  = useFetchData();
   const { state } = useFilter();
-  const { sortBy, rating, showAllProducts, laptopOnly, phoneOnly, headPhoneOnly, gamingOnly, priceRange } = state;
+  const { sortBy, rating, showAllProducts, laptopOnly, phoneOnly, headPhoneOnly, gamingOnly, priceRange, searchedProducts } = state;
+
+  const getSearchedProduct = (product, searchedProducts ) => {
+      return [...product].filter( item => item.title.toLowerCase().includes(searchedProducts));
+  }
 
   // filter functions
-  const catagoryData = catagoryFilter(product, laptopOnly, phoneOnly, headPhoneOnly, gamingOnly);
+  const searchedProduct = getSearchedProduct(product, searchedProducts);
+  const catagoryData = catagoryFilter(searchedProduct, laptopOnly, phoneOnly, headPhoneOnly, gamingOnly);
   const ratingData = sortByRating(catagoryData, rating);
   const priceRangeData = priceRangeFilter(ratingData, priceRange);
   const sortedData = sortByPrice(sortBy, priceRangeData);

@@ -1,5 +1,8 @@
 const filterReducer = (state, action) => {
     switch (action.type) {
+        case "SEARCH_PRODUCTS" :
+            return {...state, searchedProducts : action.payload}
+
         case "SORT":
             return {...state, sortBy : action.payload};
         
