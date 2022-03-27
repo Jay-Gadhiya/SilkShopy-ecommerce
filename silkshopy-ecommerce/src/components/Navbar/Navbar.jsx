@@ -5,6 +5,7 @@ import "./Navbar.css";
 import { useCart } from "../../contexts/context/cart-context";
 import { useWishList } from "../../contexts/context/wishlist-context";
 import { toast } from 'react-toastify';
+import { useFilter } from "../../contexts/context/filter-context";
 
 const Navbar = () => {
 
@@ -12,6 +13,7 @@ const Navbar = () => {
     const { authState, authDispatch } = useAuth();
     const { cartState } = useCart();
     const { wishState } = useWishList();
+    const { state ,dispatch } = useFilter();
 
      // user logout click handler
      const logoutClickHandler = (e) => {
@@ -32,6 +34,12 @@ const Navbar = () => {
 
     }
 
+    // search products
+    const searchProducts = (e) => {
+        dispatch({ type : "SEARCH_PRODUCTS", payload : (e.target.value).toLowerCase() });
+    }
+
+
     return (
         <header className="header-shopy shadow-box">
             <nav className="nav-shopy flex-center">
@@ -43,7 +51,14 @@ const Navbar = () => {
                     <button className="btn-input-box">
                         <i className="fas fa-search"></i>
                     </button>
-                    <input className="input-shopy" type="text" placeholder="search" />
+                    <input 
+                    className="input-shopy" 
+                    type="text" 
+                    placeholder="Search Products Name"
+                    value={ state.searchedProducts }
+                    onChange={ searchProducts }
+
+                     />
                     </section>
                     <section className="nav-icons flex-center">
                     {

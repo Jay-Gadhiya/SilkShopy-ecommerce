@@ -14,7 +14,8 @@ const FilterProvider = ({children}) => {
         phoneOnly: false,
         headPhoneOnly: false,
         gamingOnly: false,
-        priceRange: 50000
+        priceRange: 50000,
+        searchedProducts : ""
     })
 
     return (
