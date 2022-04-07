@@ -37,6 +37,7 @@ const Navbar = () => {
     // search products
     const searchProducts = (e) => {
         dispatch({ type : "SEARCH_PRODUCTS", payload : (e.target.value).toLowerCase() });
+        dispatch({ type: "CLEAR" });
     }
 
 
