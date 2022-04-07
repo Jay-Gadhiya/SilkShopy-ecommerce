@@ -26,7 +26,11 @@ a {
     z-index: 1;
 }
 
-/* ******************* aside part  ********************** */
+/* ******************* Filter part css ********************** */
+
+.fa-color {
+    color: #f3b33c;
+}
 
 .aside-sec {
     grid-area: aside;

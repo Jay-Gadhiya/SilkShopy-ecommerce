@@ -123,7 +123,7 @@ const Filters = () => {
                 checked ={rating === "4_AND_ABOVE"}
                 onChange={() => dispatch({ type: "RATING", payload: "4_AND_ABOVE" })}
                 />
-                <label htmlFor="4 Star & above">4 Star & above</label>
+                <label htmlFor="4 Star & above">4 <i class="fas fa-star fa-color "></i> & above</label>
             </div>
 
             <div className="sort-price flex">
@@ -134,7 +134,7 @@ const Filters = () => {
                 checked ={rating === "3_AND_ABOVE"}
                 onChange={() => dispatch({ type: "RATING", payload: "3_AND_ABOVE" })}
                  />
-                <label htmlFor="3 Star & above">3 Star & above</label>
+                <label htmlFor="3 Star & above">3 <i class="fas fa-star fa-color "></i> & above</label>
             </div>
 
             <div className="sort-price flex">
@@ -145,7 +145,7 @@ const Filters = () => {
                 checked ={rating === "2_AND_ABOVE"}
                 onChange={() => dispatch({ type: "RATING", payload: "2_AND_ABOVE" })}
                 />
-                <label htmlFor="2 Star & above">2 Star & above</label>
+                <label htmlFor="2 Star & above">2 <i class="fas fa-star fa-color "></i> & above</label>
             </div>
 
             <div className="sort-price flex">
@@ -156,7 +156,7 @@ const Filters = () => {
                 checked ={rating === "1_AND_ABOVE"} 
                 onChange={() => dispatch({ type: "RATING", payload: "1_AND_ABOVE" })}
                 />
-                <label htmlFor="1 Star & above">1 Star & above</label>
+                <label htmlFor="1 Star & above">1 <i class="fas fa-star fa-color "></i> & above</label>
             </div>
             </div>
         </aside>
