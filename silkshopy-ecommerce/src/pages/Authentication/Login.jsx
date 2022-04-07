@@ -52,7 +52,16 @@ const Login = () => {
                 });
 
         } catch (error) {
-            alert("please enter valid user name or password");
+            toast.error("Login Failed, please enter valid user name or password", {
+                position: "bottom-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme : "colored"
+                });
         }
 
     }
