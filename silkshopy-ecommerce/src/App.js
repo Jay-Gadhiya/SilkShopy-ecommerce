@@ -10,6 +10,7 @@ import { Signup } from "../src/pages/Authentication/Signup";
 import  Mockman  from "mockman-js";
 import { Loader } from "./components/Loader/Loader";
 import { useState } from "react";
+import { CheckOutPage } from "./pages/checkoutPage/checkout";
 
 function App() { 
 
@@ -32,6 +33,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/mock" element={<Mockman />} />
+        <Route path="/checkout" element={<CheckOutPage />} />
       </Routes>
     </>
     </>

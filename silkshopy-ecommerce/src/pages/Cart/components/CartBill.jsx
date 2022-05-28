@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useCart } from "../../../contexts/context/cart-context";
 
 const CartBill = () => {
@@ -33,9 +34,11 @@ const CartBill = () => {
                 </div>
 
 
-                <button className="btn-card btn-primary-card">
-                    Place order
-                </button>
+                <Link  to="/checkout"> 
+                    <button className="btn-card btn-primary-card">
+                        Place order
+                    </button>
+                </Link>
 
             </section>
     )
