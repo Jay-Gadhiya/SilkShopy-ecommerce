@@ -36,6 +36,17 @@ const CartReducer = (cartState, cartAction) => {
                     totalPrice : [...cartAction.payload].reduce( (accu, curItem) => accu + Number(curItem.price) * curItem.qty , 0) - 500
             }
     
+
+        case "CLEAR_CART" :
+
+            return {...cartState, 
+                        cart : [],
+                        itemPrice : 0,
+                        totalPrice : 0,
+                        cartProducts : 0,
+            }
+
+
         default:
             return cartState;
     }

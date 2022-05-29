@@ -1,17 +1,101 @@
 import { useEffect, useState } from "react";
 import { AddressModal } from "../../components/addressModal/addressModal";
 import { useAddress } from "../../contexts/context/addressContext";
+import { useAuth } from "../../contexts/context/authentication-context";
 import { useCart } from "../../contexts/context/cart-context";
+import { useOrder } from "../../contexts/context/orderContext";
+import { useNavigate } from "react-router";
 import "./checkout.css";
+import axios from "axios";
 
 export const CheckOutPage = () => {
 
     const [showModal, setShowModal] = useState(false);
-    const { addressState } = useAddress();
-    const initialItem = addressState.address[0];
-    const [currentAddress, setCurrentAddress] = useState(initialItem);
-    const { cartState } = useCart();
+    const { addressState, currentAddress, setCurrentAddress } = useAddress();
+    const { cartState, cartDispatch } = useCart();
+    const { orderDispatch } = useOrder();
+    const { authState } = useAuth();
+    const navigate = useNavigate();
+    const token = authState.token;
+    const newDate = new Date();
+    
 
+
+    const loadScript = (src) => {
+        return new Promise((resolve) => {
+          const script = document.createElement("script");
+          script.src = src;
+          script.onload = () => {
+            resolve(true);
+          };
+          script.onerror = () => {
+            resolve(false);
+          };
+          document.body.appendChild(script);
+        });
+      };
+
+    const clearCart = async () => {
+        cartState.cart.forEach(item => {
+            axios.delete(`/api/user/cart/${item._id}`, {
+                headers: {
+                  authorization: token,
+                },
+              })
+        })
+
+        cartDispatch({type : "CLEAR_CART"});
+        navigate("/profile/order");
+
+        
+    }
+
+
+    const displayPaymentHandler = async () => {
+        const res = await loadScript(
+          "https://checkout.razorpay.com/v1/checkout.js"
+        );
+    
+        if (!res) {
+          alert("Razorpay SDK failed to load. Are you online?");
+          return;
+        }
+    
+        const options = {
+          key: "rzp_test_0egWaV8haN0j4m", // Enter the Key ID generated from the Dashboard
+          amount: cartState.totalPrice * 100,
+          name: "SilkShopy",
+          description: "Thanks from shopping, have a good day!",
+          handler: function (response) {
+            orderDispatch({
+              type: "COMPLETE_ORDER",
+              payload: {
+                order: {
+                  orderData: cartState.cart,
+                  paymentId: response.razorpay_payment_id,
+                  price : cartState.itemPrice,
+                  totalAmount: cartState.totalPrice,
+                  address: currentAddress,
+                  date : newDate.toDateString(),
+                },
+              },
+            });
+            clearCart();
+            //DAEqeSNkEPvdiJwgXMunMLdp
+          },
+          prefill: {
+            name: "Madanlal Mithaivala",
+            email: "madanlal@gmail.com",
+            contact: "6355643681",
+          },
+          theme: {
+            color: "#528FF0",
+          },
+        };
+    
+        const paymentObject = new window.Razorpay(options);
+        paymentObject.open();
+      };
 
 
     return (
@@ -19,7 +103,7 @@ export const CheckOutPage = () => {
         {
             showModal
             &&
-            <AddressModal setShowModal={setShowModal} />
+            <AddressModal setShowModal={setShowModal}/>
 
         }
         <main className="checkout-main">
@@ -113,7 +197,7 @@ export const CheckOutPage = () => {
                     </div>
 
 
-                    <button className="check-btn" disabled={currentAddress ? false : true}>PLACE ORDER</button>
+                    <button onClick={displayPaymentHandler} className="check-btn" disabled={currentAddress ? false : true}>PLACE ORDER</button>
                 </section>
             </div>
         </main>

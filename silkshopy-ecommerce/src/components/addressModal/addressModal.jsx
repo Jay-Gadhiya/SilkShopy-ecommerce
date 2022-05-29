@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useAddress } from "../../contexts/context/addressContext";
 import { useAuth } from "../../contexts/context/authentication-context";
-import { addAddressHandler } from "../../Utilities-Functions/addressHandler";
+import { addAddressHandler, editAddressHandler } from "../../Utilities-Functions/addressHandler";
 import "./addressModal.css";
 
 export const AddressModal = ({ setShowModal }) => {
 
-    const [addressData, setAddressData] = useState({name : "", street : "", city : "", state : "", country : "", zipCode : "", mobile : ""});
-    const { addressDispatch, dummyAddress } = useAddress();
+
+    const { addressDispatch, dummyAddress, addressData, setAddressData } = useAddress();
     const { authState } = useAuth();
 
     const fillDummyAddressHandler = () => {
@@ -21,6 +21,12 @@ export const AddressModal = ({ setShowModal }) => {
 
     const addNewAddressHandler = () => {
         addAddressHandler(authState.token, addressData, addressDispatch);
+        setAddressData({name : "", street : "", city : "", state : "", country : "", zipCode : "", mobile : ""});
+        setShowModal(false);
+    }
+
+    const editAddress = () => {
+        editAddressHandler(authState.token, addressData._id, addressData, addressDispatch);
         setShowModal(false);
     }
 
@@ -36,11 +42,19 @@ export const AddressModal = ({ setShowModal }) => {
                 <input onChange={addresssHandler} value={addressData.zipCode} className="adrre-input" placeholder="6-digit Zip code" name="zipCode" type="number" />
                 <input onChange={addresssHandler} value={addressData.mobile} className="adrre-input" placeholder="10-digit phone number" name="mobile" type="number" />
                 <div className="addre-buttons">
-                    <button onClick={addNewAddressHandler} className="fill-btn">Save</button>
-                    <button onClick={fillDummyAddressHandler} className="fill-btn">Fill Dummy Data</button>
+                    {
+                        addressData._id
+                        ?
+                        <button onClick={editAddress} className="fill-btn">Update</button>
+                        :
+                        <button onClick={addNewAddressHandler} className="fill-btn">Save</button>
+
+                    }
+                    <button onClick={fillDummyAddressHandler} className="addr-operation-btn-sec">Fill Dummy Data</button>
                     <button onClick={() => {
                         setShowModal(false);
-                    }} className="fill-btn">
+                        setAddressData({name : "", street : "", city : "", state : "", country : "", zipCode : "", mobile : ""});
+                    }} className="addr-operation-btn-sec">
                         Cancle
                     </button>
                 </div>

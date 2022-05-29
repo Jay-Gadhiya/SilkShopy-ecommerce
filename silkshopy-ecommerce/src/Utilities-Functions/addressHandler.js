@@ -24,7 +24,6 @@ export const addAddressHandler = async (
   try {
     const res = await axios.post("/api/user/address",{ address,},{ headers: {authorization: token,},});
     if (res.status === 201) {
-      console.log(res);
       addressDispatch({
         type: "ADDRESS_OPERATIONS",
         payload: res.data.address,
@@ -37,8 +36,9 @@ export const addAddressHandler = async (
 
 export const editAddressHandler = async (
   token,
-  address,
-  addressDispatch,
+   _id, 
+   address,
+   addressDispatch
 ) => {
   try {
     const res = await axios.post(

@@ -11,6 +11,10 @@ import  Mockman  from "mockman-js";
 import { Loader } from "./components/Loader/Loader";
 import { useState } from "react";
 import { CheckOutPage } from "./pages/checkoutPage/checkout";
+import { ProfilePage } from "./pages/Profile/profile";
+import { ProfileInfo } from "./pages/Profile/components/profile-info";
+import { Addresses } from "./pages/Profile/components/Address";
+import { OrderDetails } from "./pages/Profile/components/orderDetails";
 
 function App() { 
 
@@ -34,6 +38,13 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/mock" element={<Mockman />} />
         <Route path="/checkout" element={<CheckOutPage />} />
+
+        <Route path="/profile/" element={<ProfilePage />} >
+          <Route path="" element={<ProfileInfo />} />
+          <Route path="address" element={<Addresses />} />
+          <Route path="order" element={<OrderDetails />} />
+        </Route>
+
       </Routes>
     </>
     </>

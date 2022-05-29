@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer, useState } from "react";
 import { getAddressHandler } from "../../Utilities-Functions/addressHandler";
 import { addressReducer } from "../reducers/addressReducer";
 import { useAuth } from "./authentication-context";
@@ -21,10 +21,17 @@ const dummyAddress = {
     mobile: "6355643681",
 }
 
+const initialAddr = {name : "", street : "", city : "", state : "", country : "", zipCode : "", mobile : ""}
+
+
 
 const AddressProvider = ({ children }) => {
 
     const [addressState, addressDispatch] = useReducer(addressReducer ,initialValue);
+
+    const initialItem = addressState.address[0];
+    const [currentAddress, setCurrentAddress] = useState(initialItem);
+    const [addressData, setAddressData] = useState(initialAddr);
 
     const { getToken } = useAuth();
 
@@ -34,7 +41,16 @@ const AddressProvider = ({ children }) => {
     
 
     return (
-        <AddressContext.Provider value={{addressState, addressDispatch, dummyAddress}}>
+        <AddressContext.Provider 
+        value={{
+            addressState, 
+            addressDispatch, 
+            dummyAddress, 
+            currentAddress, 
+            setCurrentAddress, 
+            addressData, 
+            setAddressData}}>
+                
             { children }
         </AddressContext.Provider>
     )

@@ -73,6 +73,7 @@ body {
     margin-right: 1.6rem;
     cursor: pointer;
   }
+
   
   .icon-shopy a {
     color: #696b79;
@@ -86,6 +87,10 @@ body {
   .below-text {
     font-size: 0.75rem;
     padding-right: 1.2rem;
+  }
+
+  .profile-nav{
+    padding-right: 1.4rem;
   }
   
   .nav-input-box {
