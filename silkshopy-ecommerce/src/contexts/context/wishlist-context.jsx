@@ -9,7 +9,6 @@ const useWishList = () => useContext(WishListContext);
 const WishListProvider = ({ children }) => {
     
     const [wishState, wishDispatch] = useReducer( WishListReducer, { wishListProducts : [], itemsPresent : 0 });
-    console.log("context", wishState.wishListProducts);
 
 
     return (

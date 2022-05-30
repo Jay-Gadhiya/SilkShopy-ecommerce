@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/context/authentication-context";
 import { useNavigate } from "react-router";
+import { FaUser } from 'react-icons/fa';
 import "./Navbar.css";
 import { useCart } from "../../contexts/context/cart-context";
 import { useWishList } from "../../contexts/context/wishlist-context";
@@ -73,7 +74,11 @@ const Navbar = () => {
                     <div className="nav-icons-item flex-center">
                         <span className="icon-shopy"><Link to="/wishlist"><i className="fas fa-heart"></i></Link></span>
                         <span className="below-text">Wishlist</span>
-                        <span className="badge-on-icon badge-wish-position">{ wishState.itemsPresent }</span>
+                        {
+                            wishState.itemsPresent > 0
+                            &&
+                            <span className="badge-on-icon badge-wish-position">{ wishState.itemsPresent }</span>
+                        }
                     </div>
         
                     <div className="nav-icons-item flex-center">
@@ -81,7 +86,19 @@ const Navbar = () => {
                         <Link to="/cart"><i className="fas fa-shopping-cart"></i></Link>
                         </span>
                         <span className="below-text">Cart</span>
-                        <span className="badge-on-icon  badge-cart-position">{ cartState.cartProducts }</span>
+                        {
+                            cartState.cartProducts > 0
+                            &&
+                            <span className="badge-on-icon  badge-cart-position">{ cartState.cartProducts }</span>
+
+                        }
+                    </div>
+
+                    <div className="nav-icons-item flex-center">
+                        <span className="icon-shopy icon-profile">
+                        <Link to="/profile/"><FaUser /></Link>
+                        </span>
+                        <span className="below-text profile-nav">Profile</span>
                     </div>
                     </section>
                 </div>
