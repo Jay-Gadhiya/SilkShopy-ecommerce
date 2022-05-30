@@ -91,7 +91,7 @@ a {
 /* ******************* main part  ********************** */
 
 .product-listing-container {
-    margin-top: 4rem;
+    padding-top: 4rem;
     display: flex;
     flex-direction: column;
     padding-right: 0;
