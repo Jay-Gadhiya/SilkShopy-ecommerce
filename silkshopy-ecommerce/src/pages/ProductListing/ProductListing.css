@@ -135,6 +135,9 @@ a {
     margin-bottom: .4rem;
 }
 
+.colr {
+    color: gray;
+}
 
 
 @media screen and (max-width : 854px) {

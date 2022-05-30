@@ -30,10 +30,18 @@ const ProductListing = () => {
 
         <main className="product-listing-container">
           <h2 className="product-main-heading margin-bottom">Products</h2>
+          {
+            sortedData.length !== 0
+            ?
+            <div className="product-cards">
+              {product && sortedData.map((item) => ( <Card key={item.id} productData = {item}  /> ))}
+            </div>
+            :
+            <h2 className="product-main-heading margin-bottom colr">No Products found</h2>
 
-          <div className="product-cards">
-            {product && sortedData.map((item) => ( <Card key={item.id} productData = {item}  /> ))}
-          </div>
+          }
+
+          
         </main>
         
       </div>

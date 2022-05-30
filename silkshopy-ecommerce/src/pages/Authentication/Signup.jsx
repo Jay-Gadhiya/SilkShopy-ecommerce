@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Authentication.css";
-import { useNavigate } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 import axios from "axios";
 import { useAuth } from "../../contexts/context/authentication-context";
 import { toast } from 'react-toastify';
@@ -12,6 +12,8 @@ const Signup = () => {
     const [userData, setUserData] = useState({  firstName : "", lastName : "", email : "", password : "" });
     const navigate = useNavigate();
     const { authDispatch } = useAuth();
+    const location = useLocation();
+    let from = location.state?.from?.pathname || '/';
 
     // user inputs
     const userInputValues = (e) => {
@@ -31,11 +33,11 @@ const Signup = () => {
           });
 
           localStorage.setItem("token", response.data.encodedToken);
-          navigate("/productListing");
+          navigate(from, { replace: true });
           authDispatch({ type : "USER_SIGNUP", payload : response.data.encodedToken });
 
           toast.success("Sign Up Successfully", {
-            position: "bottom-center",
+            position: "top-center",
             autoClose: 1100,
             hideProgressBar: false,
             closeOnClick: true,
@@ -47,7 +49,7 @@ const Signup = () => {
 
         } catch (error) {
             toast.error("Sign Up failed", {
-                position: "bottom-center",
+                position: "top-center",
                 autoClose: 3000,
                 hideProgressBar: false,
                 closeOnClick: true,

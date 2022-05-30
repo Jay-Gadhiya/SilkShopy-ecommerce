@@ -15,6 +15,7 @@ import { ProfilePage } from "./pages/Profile/profile";
 import { ProfileInfo } from "./pages/Profile/components/profile-info";
 import { Addresses } from "./pages/Profile/components/Address";
 import { OrderDetails } from "./pages/Profile/components/orderDetails";
+import { RequiresAuth } from "./Utilities-Functions/RequiresAuth";
 
 function App() { 
 
@@ -32,14 +33,32 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/productListing" element={<ProductListing />} />
-        <Route path="/wishlist" element={<Wishlist/>} />
-        <Route path="/cart" element={<Cart />} />
+        <Route 
+          path="/wishlist" 
+          element={
+            <RequiresAuth>
+              <Wishlist/>
+            </RequiresAuth>
+          } 
+        />
+        <Route 
+          path="/cart" 
+          element={
+            <RequiresAuth>
+              <Cart />
+            </RequiresAuth>
+          } />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/mock" element={<Mockman />} />
         <Route path="/checkout" element={<CheckOutPage />} />
 
-        <Route path="/profile/" element={<ProfilePage />} >
+        <Route path="/profile/" 
+        element={
+        <RequiresAuth>
+          <ProfilePage />
+        </RequiresAuth>
+        } >
           <Route path="" element={<ProfileInfo />} />
           <Route path="address" element={<Addresses />} />
           <Route path="order" element={<OrderDetails />} />

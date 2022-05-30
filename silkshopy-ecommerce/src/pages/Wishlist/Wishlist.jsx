@@ -11,7 +11,6 @@ const Wishlist = () => {
 
     const { wishState } = useWishList();
     const { authState } = useAuth();
-    console.log("wishlist page", wishState.wishListProducts);
 
 
     return (

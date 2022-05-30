@@ -8,7 +8,7 @@ const removeFromCart = async (item,  authState, cartDispatch) => {
         cartDispatch({type : "REMOVE_FROM_CART", payload : res.data.cart });
 
         toast.success("Remove From Cart Successfully", {
-            position: "bottom-center",
+            position: "top-center",
             autoClose: 1200,
             hideProgressBar: false,
             closeOnClick: true,

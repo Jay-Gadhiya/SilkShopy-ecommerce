@@ -1,12 +1,15 @@
 import { Link } from "react-router-dom";
 import { Card } from "../../components/Card";
 import { Footer } from "../../components/Footer/Footer";
+import { useFilter } from "../../contexts/context/filter-context";
 import { useFetchData } from "../ProductListing/functions/fetch-data";
 import "./Home.css";
 
-const Home = () => {
+const Home = () => {  
 
     const { product } = useFetchData();
+    const { state, dispatch } = useFilter();
+
 
     return (
         <>
@@ -35,33 +38,42 @@ const Home = () => {
             <div className="title-underline"></div>
 
             <section className="feature-grid-layout">
-            <article className="feature-cat-container">
+            <Link to="/productlisting">
+            <article onClick={() => dispatch({ type: "TOGGLE_SMARTPHONE" })} className="feature-cat-container">
                 <figure className="img-box">
                 <img src="https://github.com/Jay-Gadhiya/silkshopy/blob/dev/images/back-smartp-img.jpeg?raw=true" className="back-imgs" />
                 </figure>
-                <figcaption className="text-overlay flex-center"><Link to="/productListing">Smartphones</Link></figcaption>
+                <figcaption className="text-overlay flex-center">Smartphones</figcaption>
             </article>
+            </Link>
 
-            <article className="feature-cat-container">
+            <Link to="/productlisting">
+            <article onClick={() => dispatch({ type: "TOGGLE_LAPTOP" })} className="feature-cat-container">
                 <figure className="img-box">
                 <img src="https://github.com/Jay-Gadhiya/silkshopy/blob/dev/images/back-lap-img.jpeg?raw=true" className="back-imgs" />
                 </figure>
-                <figcaption className="text-overlay flex-center"><Link to="/productListing">Laptops</Link></figcaption>
+                <figcaption className="text-overlay flex-center">Laptops</figcaption>
             </article>
+            </Link>
 
-            <article className="feature-cat-container">
+            <Link to="/productlisting">
+            <article onClick={() => dispatch({ type: "TOGGLE_HEADPHONE" })} className="feature-cat-container">
                 <figure className="img-box">
                 <img src="https://github.com/Jay-Gadhiya/silkshopy/blob/dev/images/back-hp-img.jpeg?raw=true" className="back-imgs" />
                 </figure>
-                <figcaption className="text-overlay flex-center"><Link to="/productListing">Headphones</Link></figcaption>
+                <figcaption className="text-overlay flex-center">Headphones</figcaption>
             </article>
+            </Link>
 
-            <article className="feature-cat-container">
+            <Link to="/productlisting">
+            <article onClick={() => dispatch({ type: "TOGGLE_GAMING" })} className="feature-cat-container">
                 <figure className="img-box">
                 <img src="https://github.com/Jay-Gadhiya/silkshopy/blob/dev/images/back-game-img.jpeg?raw=true" className="back-imgs" />
                 </figure>
-                <figcaption className="text-overlay flex-center"><Link to="/productListing">Gaming</Link></figcaption>
+                <figcaption className="text-overlay flex-center">Gaming</figcaption>
             </article>
+            </Link>
+
             </section>
 
             <section className="features-heading-box flex-center">

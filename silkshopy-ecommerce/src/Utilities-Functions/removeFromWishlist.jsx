@@ -9,7 +9,7 @@ const removeFromWishList = async (item, authState, wishDispatch) => {
         wishDispatch({type : "REMOVE_FROM_WISHLIST", payload : res.data.wishlist });
         
         toast.success("Remove From Wishlist Successfully", {
-            position: "bottom-center",
+            position: "top-center",
             autoClose: 1200,
             hideProgressBar: false,
             closeOnClick: true,

@@ -9,7 +9,7 @@ const addToWishList = async (product, authState, wishDispatch, navigate) => {
             wishDispatch({ type: "ADD_TO_WISHLIST", payload : res.data.wishlist });
             
             toast.success("Add to Wishlist Successfully", {
-                position: "bottom-center",
+                position: "top-center",
                 autoClose: 1200,
                 hideProgressBar: false,
                 closeOnClick: true,

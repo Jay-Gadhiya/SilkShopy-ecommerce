@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../../contexts/context/authentication-context";
 import { useNavigate } from "react-router";
 import { FaUser } from 'react-icons/fa';
@@ -7,6 +7,7 @@ import { useCart } from "../../contexts/context/cart-context";
 import { useWishList } from "../../contexts/context/wishlist-context";
 import { toast } from 'react-toastify';
 import { useFilter } from "../../contexts/context/filter-context";
+import { AiFillShopping } from 'react-icons/ai';
 
 const Navbar = () => {
 
@@ -39,13 +40,25 @@ const Navbar = () => {
     const searchProducts = (e) => {
         dispatch({ type : "SEARCH_PRODUCTS", payload : (e.target.value).toLowerCase() });
         dispatch({ type: "CLEAR" });
+        navigate("/productlisting");
     }
+
+    const getActiveStyle = ({ isActive }) => ({
+        color: isActive ? "#4285F4" : "#696b79",
+    });
 
 
     return (
         <header className="header-shopy shadow-box">
             <nav className="nav-shopy flex-center">
-                <section className="brand-name"><Link to="/"><img className="silk-img" src="https://silkshopyy.netlify.app/images/silkshopy-name.jpeg" alt="silk-img"/></Link>
+                <section className="brand-name">
+                    <Link to="/"><img className="silk-img" src="https://silkshopyy.netlify.app/images/silkshopy-name.jpeg" alt="silk-img"/></Link>
+                    <NavLink  style={getActiveStyle} to="/productlisting" className="nav-icons-item flex-center">
+                        <div className="shop-menu">
+                            <AiFillShopping className="shop-icon"/>
+                            <span className="below-text-shop">Shop</span>
+                        </div>
+                    </NavLink>
                 </section>
     
                 <div className="nav-items flex-center">
@@ -55,7 +68,7 @@ const Navbar = () => {
                     </button>
                     <input 
                     className="input-shopy" 
-                    type="text" 
+                    type="search" 
                     placeholder="Search Products Name"
                     value={ state.searchedProducts }
                     onChange={ searchProducts }
@@ -71,19 +84,20 @@ const Navbar = () => {
                     }
                     
         
-                    <div className="nav-icons-item flex-center">
-                        <span className="icon-shopy"><Link to="/wishlist"><i className="fas fa-heart"></i></Link></span>
-                        <span className="below-text">Wishlist</span>
+                    <NavLink style={getActiveStyle} to="/wishlist" className="nav-icons-item flex-center">
+                            <span className="icon-shopy"><i className="fas fa-heart"></i></span>
+                            <span className="below-text">Wishlist</span>
+                        
                         {
                             wishState.itemsPresent > 0
                             &&
                             <span className="badge-on-icon badge-wish-position">{ wishState.itemsPresent }</span>
                         }
-                    </div>
+                    </NavLink >
         
-                    <div className="nav-icons-item flex-center">
+                    <NavLink  style={getActiveStyle} to="/cart" className="nav-icons-item flex-center">
                         <span className="icon-shopy">
-                        <Link to="/cart"><i className="fas fa-shopping-cart"></i></Link>
+                        <i className="fas fa-shopping-cart"></i>
                         </span>
                         <span className="below-text">Cart</span>
                         {
@@ -92,14 +106,14 @@ const Navbar = () => {
                             <span className="badge-on-icon  badge-cart-position">{ cartState.cartProducts }</span>
 
                         }
-                    </div>
+                    </NavLink>
 
-                    <div className="nav-icons-item flex-center">
+                    <NavLink style={getActiveStyle} to="/profile/" className="nav-icons-item flex-center">
                         <span className="icon-shopy icon-profile">
-                        <Link to="/profile/"><FaUser /></Link>
+                        <FaUser />
                         </span>
                         <span className="below-text profile-nav">Profile</span>
-                    </div>
+                    </NavLink>
                     </section>
                 </div>
            </nav>

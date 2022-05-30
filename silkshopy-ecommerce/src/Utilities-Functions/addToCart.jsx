@@ -9,7 +9,7 @@ const addToCart = async (product, authState, cartDispatch, navigate) => {
             cartDispatch({type : "ADD_TO_CART", payload : res.data.cart });
 
             toast.success("Add to cart Successfully", {
-                position: "bottom-center",
+                position: "top-center",
                 autoClose: 1100,
                 hideProgressBar: false,
                 closeOnClick: true,

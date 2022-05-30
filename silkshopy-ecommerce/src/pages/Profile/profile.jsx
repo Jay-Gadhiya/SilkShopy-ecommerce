@@ -7,7 +7,7 @@ export const ProfilePage = () => {
     const getActiveStyle = ({ isActive }) => ({
         backgroundColor: isActive ? "#4285F4" : "#fff",
         color: isActive ? "#fff" : "#000",
-      });
+    });
 
     return (
         <main className="profile-main">

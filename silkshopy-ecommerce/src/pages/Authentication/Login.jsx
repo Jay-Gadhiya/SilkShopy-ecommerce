@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/context/authentication-context";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 import { toast } from 'react-toastify';
 
 
@@ -12,6 +12,8 @@ const Login = () => {
     const navigate = useNavigate();
     const [userData, setUserData] = useState({email : "", password : ""});
     const { authState, authDispatch } = useAuth();
+    const location = useLocation();
+    let from = location.state?.from?.pathname || '/';
 
     // Dummy data for guest credential
     const dummyData = {
@@ -38,10 +40,10 @@ const Login = () => {
             
             localStorage.setItem("token", response.data.encodedToken);
             authDispatch({ type : "USER_LOGIN", payload : response.data.encodedToken })
-            navigate("/productlisting");
+            navigate(from, { replace: true });
 
             toast.success("Login Successfully", {
-                position: "bottom-center",
+                position: "top-center",
                 autoClose: 1100,
                 hideProgressBar: false,
                 closeOnClick: true,
