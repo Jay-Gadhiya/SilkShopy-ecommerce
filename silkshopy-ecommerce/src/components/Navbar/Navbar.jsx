@@ -44,6 +44,21 @@ const Navbar = () => {
 
     }
 
+    const debounce = (callback, delay) => {
+        let timer = "";
+    
+        return function() {
+            let context = this;
+            let args = arguments;
+    
+            clearTimeout(timer);
+    
+            timer = setTimeout(() => {
+                callback.apply(context, args);
+            }, delay);
+        }
+    }
+
     // search products
     const searchProducts = (e) => {
         dispatch({ type : "SEARCH_PRODUCTS", payload : (e.target.value).toLowerCase() });
@@ -58,6 +73,8 @@ const Navbar = () => {
     const MenuActiveStyle = ({ isActive }) => ({
         color: isActive ? "#4285F4" : "#333333",
     });
+
+    const searcheDebounce = debounce(searchProducts, 400);
 
 
     return (
@@ -83,8 +100,7 @@ const Navbar = () => {
                             className="input-shopy" 
                             type="search" 
                             placeholder="Search Products Name"
-                            value={ state.searchedProducts }
-                            onChange={ searchProducts }
+                            onChange={ searcheDebounce }
 
                         />
                     </section>

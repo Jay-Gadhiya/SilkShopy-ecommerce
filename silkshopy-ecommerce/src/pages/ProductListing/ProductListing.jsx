@@ -5,7 +5,7 @@ import "./ProductListing.css";
 import { useFilter } from "../../contexts/context/filter-context";
 import { catagoryFilter, sortByRating, sortByPrice, priceRangeFilter, useFetchData } from "./functions/export";
 import { MobileFIlter } from "./components/mobileFilter";
-
+ 
 const ProductListing = () => {
 
   const  { product }  = useFetchData();
@@ -15,6 +15,7 @@ const ProductListing = () => {
   const getSearchedProduct = (product, searchedProducts ) => {
       return [...product].filter( item => item.title.toLowerCase().includes(searchedProducts));
   }
+
 
   // filter functions
   const searchedProduct = getSearchedProduct(product, searchedProducts);
@@ -33,7 +34,7 @@ const ProductListing = () => {
         <main className="product-listing-container">
           <h2 className="product-main-heading margin-bottom">Products</h2>
           {
-            sortedData.length !== 0
+            sortedData?.length !== 0
             ?
             <div className="product-cards">
               {product && sortedData.map((item) => ( <Card key={item.id} productData = {item}  /> ))}
