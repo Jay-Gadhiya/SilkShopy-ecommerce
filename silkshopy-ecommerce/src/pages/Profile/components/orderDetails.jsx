@@ -12,7 +12,7 @@ export const OrderDetails = () => {
                 <>
                     {
                         orderState?.allOrders.map((order => (
-                            <div className="order-main-container">
+                            <div key={order?.paymentId} className="order-main-container">
                                 <div className="order-decription-wrapper">
                                     <h3 className="order-msg">Order Confirmed</h3>
                                     <p>{order.date}</p>

@@ -41,6 +41,7 @@ body {
     height: 4.5rem;
     max-width: 90%;
     margin: auto;
+    position: relative;
   }
   
   .brand-name {
@@ -48,6 +49,7 @@ body {
     color: var(--primary-color);
     display: flex;
     gap: 3rem;
+    align-items: center;
   }
   
   .silk-img {
@@ -108,6 +110,15 @@ body {
     outline: 0px;
     background-color: transparent;
   }
+
+  .input-shopy-abs {
+    width: 18rem;
+    border: none;
+    padding: 0.7rem 1rem;
+    outline: 0px;
+    background-color: transparent;
+    display: none;
+  }
   
   .btn-input-box {
     padding: 0.7rem 1rem;
@@ -157,10 +168,72 @@ body {
  .below-text-shop {
    font-size: .8rem;
  }
+
+ .hamburger {
+   font-size: 1.3rem;
+   margin-left: 5px;
+   display: none;
+ }
+
+ .ham-wrapper {
+    position: absolute;
+    left: 0;
+    background-color: #d3d3d3;
+    width: 100%;
+    max-width: 12rem;
+    padding: 10px 7px;
+    top: 0;
+ }
+
+ .ham-cross {
+   display: flex;
+   margin-left: auto;
+   font-size: 1.5rem;
+ }
+
+ .ham-items-wrapper {
+   display: flex;
+   flex-direction: column;
+   gap: 1rem;
+   margin-top: 2rem;
+   margin-bottom: 1rem;
+   margin-left: 20%;
+   height: 100vh;
+ }
+
+ .ham-items {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--default-black); 
+ }
+
+ .ham-icon {
+   font-size: 1.5rem;
+ }
+
+ .ham-title {
+   font-size: 1.1rem;
+ }
+
+ .box-icon {
+   margin-right: 4px;
+   font-size: 1.18rem;
+ }
+
   
   @media screen and (max-width : 820px) {
+
     .nav-input-box {
-        display: none;
+      display: none;
+    }
+
+    .input-shopy-abs {
+      display: block;
+      position: absolute;
+      top: 4rem;
+      background-color: aliceblue;
+      width: 100%;
     }
   
     .nav-shopy {
@@ -186,4 +259,36 @@ body {
         margin-right: 1rem;
         cursor: pointer;
     }
+
+  }
+
+  @media screen and (max-width : 520px) {
+    
+    .brand-name {
+      gap: 1px;
+    }
+
+    .hamburger {
+      display: block;
+    }
+
+    .silk-img {
+      max-width: 6.7rem;
+      height: auto;
+      padding-left: 8px;
+      margin-right: auto;
+    }
+
+    .shop-icon {
+      font-size: 1.6rem;
+     }
+    
+     .below-text-shop {
+       font-size: .7rem;
+     }
+
+     .d-none {
+       display: none;
+     }
+
   }

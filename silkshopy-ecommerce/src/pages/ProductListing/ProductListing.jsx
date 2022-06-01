@@ -4,6 +4,7 @@ import { Filters } from "./components/Filter";
 import "./ProductListing.css";
 import { useFilter } from "../../contexts/context/filter-context";
 import { catagoryFilter, sortByRating, sortByPrice, priceRangeFilter, useFetchData } from "./functions/export";
+import { MobileFIlter } from "./components/mobileFilter";
 
 const ProductListing = () => {
 
@@ -27,6 +28,7 @@ const ProductListing = () => {
       <div className="page-container">
 
         <Filters />
+        <MobileFIlter />
 
         <main className="product-listing-container">
           <h2 className="product-main-heading margin-bottom">Products</h2>

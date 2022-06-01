@@ -8,6 +8,13 @@ import { useWishList } from "../../contexts/context/wishlist-context";
 import { toast } from 'react-toastify';
 import { useFilter } from "../../contexts/context/filter-context";
 import { AiFillShopping } from 'react-icons/ai';
+import { GiHamburgerMenu } from 'react-icons/gi';
+import { AiOutlineClose } from 'react-icons/ai';
+import { BsBoxSeam } from 'react-icons/bs';
+import { FaAddressCard } from 'react-icons/fa';
+import { CgLogIn } from 'react-icons/cg';
+import { useState } from "react";
+
 
 const Navbar = () => {
 
@@ -16,6 +23,7 @@ const Navbar = () => {
     const { cartState } = useCart();
     const { wishState } = useWishList();
     const { state ,dispatch } = useFilter();
+    const [showMenu, setShowMenu] = useState(false);
 
      // user logout click handler
      const logoutClickHandler = (e) => {
@@ -47,13 +55,18 @@ const Navbar = () => {
         color: isActive ? "#4285F4" : "#696b79",
     });
 
+    const MenuActiveStyle = ({ isActive }) => ({
+        color: isActive ? "#4285F4" : "#333333",
+    });
+
 
     return (
         <header className="header-shopy shadow-box">
             <nav className="nav-shopy flex-center">
                 <section className="brand-name">
+                    <GiHamburgerMenu onClick={() => setShowMenu(true)} className="hamburger"/>
                     <Link to="/"><img className="silk-img" src="https://silkshopyy.netlify.app/images/silkshopy-name.jpeg" alt="silk-img"/></Link>
-                    <NavLink  style={getActiveStyle} to="/productlisting" className="nav-icons-item flex-center">
+                    <NavLink  style={getActiveStyle} to="/productlisting" className="nav-icons-item flex-center d-none">
                         <div className="shop-menu">
                             <AiFillShopping className="shop-icon"/>
                             <span className="below-text-shop">Shop</span>
@@ -63,17 +76,17 @@ const Navbar = () => {
     
                 <div className="nav-items flex-center">
                     <section className="nav-input-box flex-center">
-                    <button className="btn-input-box">
-                        <i className="fas fa-search"></i>
-                    </button>
-                    <input 
-                    className="input-shopy" 
-                    type="search" 
-                    placeholder="Search Products Name"
-                    value={ state.searchedProducts }
-                    onChange={ searchProducts }
+                        <button className="btn-input-box">
+                            <i className="fas fa-search"></i>
+                        </button>
+                        <input 
+                            className="input-shopy" 
+                            type="search" 
+                            placeholder="Search Products Name"
+                            value={ state.searchedProducts }
+                            onChange={ searchProducts }
 
-                     />
+                        />
                     </section>
                     <section className="nav-icons flex-center">
                     {
@@ -116,7 +129,51 @@ const Navbar = () => {
                     </NavLink>
                     </section>
                 </div>
+                <input 
+                    className="input-shopy-abs" 
+                    type="search" 
+                    placeholder="Search Products Name"
+                    value={ state.searchedProducts }
+                    onChange={ searchProducts }
+                />
+
+                {
+                    showMenu
+                    &&
+                    <div className="ham-wrapper">
+                        <div onClick={() => setShowMenu(false)} ><AiOutlineClose className="ham-cross" /></div>
+                        <div  className="ham-items-wrapper">
+                            <NavLink style={MenuActiveStyle} onClick={() => setShowMenu(false)} to="/productlisting" className="ham-items">
+                                <AiFillShopping  className="ham-icon"/>
+                                <p className="ham-title">Shop Now</p>
+                            </NavLink>
+                            <NavLink style={MenuActiveStyle} to="/profile/order" onClick={() => setShowMenu(false)} className="ham-items">
+                                <BsBoxSeam  className="box-icon"/>
+                                <p className="ham-title">Orders</p>
+                            </NavLink>
+                            <NavLink style={MenuActiveStyle} to="/profile/address" onClick={() => setShowMenu(false)} className="ham-items">
+                                <FaAddressCard  className="box-icon"/>
+                                <p className="ham-title">My Address</p>
+                            </NavLink>
+                            <div className="ham-items">
+                                <CgLogIn  className="box-icon"/>
+                                {
+                                    authState.token
+                                    ?
+                                    <p onClick={logoutClickHandler} className="ham-title">Logout</p>
+                                    :
+                                    <p className="ham-title"><Link to="/login">Login</Link></p>
+
+                                } 
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                
+                
            </nav>
+                
         </header>
     )
 }

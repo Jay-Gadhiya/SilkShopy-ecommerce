@@ -1,16 +1,27 @@
 import { useState } from "react";
 import { useFilter } from "../../../contexts/context/filter-context";
 
-const Filters = () => {
+export const MobileFIlter = () => {
 
     const { state, dispatch } = useFilter();
     const {priceRange, sortBy, rating, laptopOnly, phoneOnly, headPhoneOnly, gamingOnly} = state;
-    const [showFilter, setShowFilter] = useState(true);
+    const [showFilter, setShowFilter] = useState(false);
+
+    const filterActionHandler = () => {
+        setShowFilter(open => !open);
+    }
+
+    const clearAllFilterHandler = () => {
+        dispatch({ type: "CLEAR" });
+        setShowFilter(false);
+    };
+
+    
     
     return (
         <>
-        <div className={`aside-sec filter-hide`}>
-        <aside className="aside-sec">
+        <div className={`res-mob-aside aside-sec filter-show ${showFilter ? "" : "hide-fil"}`}>
+        <section className="aside-sec">
             <div className="filter-clear-sec flex-center margin-bottom">    
                 <span className="filter font-style">
                     Filters
@@ -48,7 +59,7 @@ const Filters = () => {
             <div className="sort-price flex">
                 <input 
                 type="radio" 
-                name="price" 
+                name="priceM" 
                 id="low-to-high"
                 checked={ sortBy === "LOW_TO_HIGH" }
                 onChange={() => dispatch({ type: "SORT", payload: "LOW_TO_HIGH" })}
@@ -59,7 +70,7 @@ const Filters = () => {
             <div className="sort-price flex">
                 <input 
                 type="radio" 
-                name="price" 
+                name="priceM" 
                 id="high-to-low" 
                 checked={ sortBy === "HIGH_TO_LOW" }
                 onChange={() => dispatch({ type: "SORT", payload: "HIGH_TO_LOW" })}
@@ -122,7 +133,7 @@ const Filters = () => {
             <div className="sort-price flex">
                 <input 
                 type="radio" 
-                name="rating" 
+                name="ratingM" 
                 id="four-and-above"
                 checked ={rating === "4_AND_ABOVE"}
                 onChange={() => dispatch({ type: "RATING", payload: "4_AND_ABOVE" })}
@@ -133,7 +144,7 @@ const Filters = () => {
             <div className="sort-price flex">
                 <input 
                 type="radio" 
-                name="rating" 
+                name="ratingM" 
                 id="three-and-above"
                 checked ={rating === "3_AND_ABOVE"}
                 onChange={() => dispatch({ type: "RATING", payload: "3_AND_ABOVE" })}
@@ -144,7 +155,7 @@ const Filters = () => {
             <div className="sort-price flex">
                 <input 
                 type="radio" 
-                name="rating" 
+                name="ratingM" 
                 id="two-and-above" 
                 checked ={rating === "2_AND_ABOVE"}
                 onChange={() => dispatch({ type: "RATING", payload: "2_AND_ABOVE" })}
@@ -155,7 +166,7 @@ const Filters = () => {
             <div className="sort-price flex">
                 <input 
                 type="radio" 
-                name="rating" 
+                name="ratingM" 
                 id="one-and-above"
                 checked ={rating === "1_AND_ABOVE"} 
                 onChange={() => dispatch({ type: "RATING", payload: "1_AND_ABOVE" })}
@@ -163,14 +174,12 @@ const Filters = () => {
                 <label htmlFor="1 Star & above">1 <i class="fas fa-star fa-color "></i> & above</label>
             </div>
             </div>
-        </aside>
+        </section>
     </div>
-    <div onClick={() => setShowFilter(open => !open)} className="filters-wrapper-moble">
-        <button className="btn-filter-mobile">Clear All</button>
-        <button className="btn-filter-mobile btn-filters">{showFilter ? "Apply" : "Filters"}</button>
+    <div  className="filters-wrapper-moble">
+        <button onClick={clearAllFilterHandler} className="btn-filter-mobile">Clear All</button>
+        <button onClick={filterActionHandler} className="btn-filter-mobile btn-filters">{showFilter ? "Apply" : "Filters"}</button>
     </div>
     </>
     )
 }
-
-export {Filters};
